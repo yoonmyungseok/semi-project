@@ -1,0 +1,12 @@
+
+div {
+    font-family: 'IBM Plex Sans KR';
+    box-sizing: border-box;
+}
+
+.main-wrap {
+    margin: auto;
+    width: 1200px;
+    border: 1px solid red;
+}
+

@@ -1,0 +1,177 @@
+/*===============부트스트랩 custom============*/
+:root{
+    --nubigoMain:#00b8ff;
+    --nubigoSub:#FFCA29;
+}
+/*메인버튼*/
+.btn-nubigoMain {
+    color: #fff;
+    background-color: #00b8ff;
+    border-color: #00b8ff;
+}
+.btn-nubigoMain:hover {
+    color: #fff;
+    background-color: #00b8ff;
+    border-color: #00b8ff;
+}
+.btn-nubigoMain:focus,
+.btn-nubigoMain.focus {
+    color: #fff;
+    background-color: #00b8ff;
+    border-color: #00b8ff;
+    box-shadow: 0 0 0 0.2rem #00b8ff;
+}
+.btn-nubigoMain.disabled,
+.btn-nubigoMain:disabled {
+    color: #fff;
+    background-color: #00b8ff;
+    border-color: #00b8ff;
+}
+.btn-nubigoMain:not(:disabled):not(.disabled):active,
+.btn-nubigoMain:not(:disabled):not(.disabled).active,
+.show>.btn-nubigoMain.dropdown-toggle {
+    color: #fff;
+    background-color: #00b8ff;
+    border-color: #00b8ff;
+}
+.btn-nubigoMain:not(:disabled):not(.disabled):active:focus,
+.btn-nubigoMain:not(:disabled):not(.disabled).active:focus,
+.show>.btn-nubigoMain.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem #00b8ff;
+}
+
+.btn-outline-nubigoMain {
+    color: #00b8ff;
+    border-color: #00b8ff;
+}
+
+.btn-outline-nubigoMain:hover {
+    color: #fff;
+    background-color: #00b8ff;
+    border-color: #00b8ff;
+}
+
+.btn-outline-nubigoMain:focus,
+.btn-outline-nubigoMain.focus {
+    box-shadow: 0 0 0 0.2rem #00b8ff;
+}
+
+.btn-outline-nubigoMain.disabled,
+.btn-outline-nubigoMain:disabled {
+    color: #00b8ff;
+    background-color: transparent;
+}
+
+.btn-outline-nubigoMain:not(:disabled):not(.disabled):active,
+.btn-outline-nubigoMain:not(:disabled):not(.disabled).active,
+.show>.btn-outline-nubigoMain.dropdown-toggle {
+    color: #fff;
+    background-color: #00b8ff;
+    border-color: #00b8ff;
+}
+
+.btn-outline-nubigoMain:not(:disabled):not(.disabled):active:focus,
+.btn-outline-nubigoMain:not(:disabled):not(.disabled).active:focus,
+.show>.btn-outline-nubigoMain.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem #00b8ff;
+}
+/*서브버튼*/
+.btn-nubigoSub {
+    color: #000;
+    background-color: #FFCA29;
+    border-color: #FFCA29;
+}
+
+.btn-nubigoSub:hover {
+    color: #000;
+    background-color: #FFCA29;
+    border-color: #FFCA29;
+}
+
+.btn-nubigoSub:focus,
+.btn-nubigoSub.focus {
+    color: #000;
+    background-color: #FFCA29;
+    border-color: #FFCA29;
+    box-shadow: 0 0 0 0.2rem #ffca29;
+}
+
+.btn-nubigoSub.disabled,
+.btn-nubigoSub:disabled {
+    color: #000;
+    background-color: #FFCA29;
+    border-color: #FFCA29;
+}
+
+.btn-nubigoSub:not(:disabled):not(.disabled):active,
+.btn-nubigoSub:not(:disabled):not(.disabled).active,
+.show>.btn-nubigoSub.dropdown-toggle {
+    color: #000;
+    background-color: #FFCA29;
+    border-color: #FFCA29;
+}
+
+.btn-nubigoSub:not(:disabled):not(.disabled):active:focus,
+.btn-nubigoSub:not(:disabled):not(.disabled).active:focus,
+.show>.btn-nubigoSub.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem #FFCA29;
+}
+.btn-outline-nubigoSub {
+    color: #FFCA29;
+    border-color: #FFCA29;
+}
+
+.btn-outline-nubigoSub:hover {
+    color: #000;
+    background-color: #FFCA29;
+    border-color: #FFCA29;
+}
+
+.btn-outline-nubigoSub:focus,
+.btn-outline-nubigoSub.focus {
+    box-shadow: 0 0 0 0.2rem #FFCA29;
+}
+
+.btn-outline-nubigoSub.disabled,
+.btn-outline-nubigoSub:disabled {
+    color: #FFCA29;
+    background-color: transparent;
+}
+
+.btn-outline-nubigoSub:not(:disabled):not(.disabled):active,
+.btn-outline-nubigoSub:not(:disabled):not(.disabled).active,
+.show>.btn-outline-nubigoSub.dropdown-toggle {
+    color: #000;
+    background-color: #FFCA29;
+    border-color: #FFCA29;
+}
+
+.btn-outline-nubigoSub:not(:disabled):not(.disabled):active:focus,
+.btn-outline-nubigoSub:not(:disabled):not(.disabled).active:focus,
+.show>.btn-outline-nubigoSub.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem #FFCA29;
+}
+
+
+
+#wrap {
+    width: 1200px;
+    margin: auto;
+}
+
+#wrap>table {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+/* 댓글 */
+.board-comment span{
+    cursor: pointer;
+}
+
+/*=================관리자페이지==============*/
+#wrap ol ul li {
+    background-color: transparent;
+    border-bottom: 0;
+    padding-bottom: 0;
+}
