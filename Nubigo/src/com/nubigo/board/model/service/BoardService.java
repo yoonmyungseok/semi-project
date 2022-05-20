@@ -2,6 +2,9 @@ package com.nubigo.board.model.service;
 
 import static com.nubigo.common.JDBCTemplate.close;
 import static com.nubigo.common.JDBCTemplate.getConnection;
+import static com.nubigo.common.JDBCTemplate.commit;
+import static com.nubigo.common.JDBCTemplate.rollback;
+
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -22,5 +25,18 @@ public class BoardService {
 		Board b=new BoardDao().selectBoard(conn, boardNo);
 		close(conn);
 		return b;
+	}
+	
+	public int insertBoard(Board b) {
+		Connection conn=getConnection();
+		int result=new BoardDao().insertBoard(conn,b);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 }

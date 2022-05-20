@@ -70,7 +70,7 @@
                     </div>
                 </div>
             </form>
-            <a class="btn btn-nubigoMain ml-auto" type="button" href="boardEnrollForm.jsp">글쓰기</a>
+            <a class="btn btn-nubigoMain ml-auto" type="button" href="<%=contextPath%>/enrollForm.bo">글쓰기</a>
         </div>
         <nav>
             <ul class="pagination justify-content-center">

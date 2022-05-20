@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String contextPath=request.getContextPath();
+
+	String alertMsg=(String)session.getAttribute("alertMsg");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,5 +66,17 @@
             </li>
         </div>
     </div>
+    <script>
+    (function(){
+        var msg = "<%=alertMsg%>";
+        if (msg != "null") {
+            alert(msg);
+        //알림창을 띄워 준 후 session에 담긴 해당 메시지를
+        //session.removeAttribute("키값"); 메소드로 지워줘야 함
+        //안그러면 menubar.jsp가 로딩 될 때 마다 매번 alert가 계속 뜸
+        '<% session.removeAttribute("alertMsg"); %>'
+        }
+    })
+    </script>
 </body>
 </html>

@@ -1,27 +1,23 @@
 package com.nubigo.board.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.nubigo.board.model.service.BoardService;
-import com.nubigo.board.model.vo.Board;
-
 /**
- * Servlet implementation class BoardDetailController
+ * Servlet implementation class BoardEnrollFormController
  */
-@WebServlet("/detail.bo")
-public class BoardDetailController extends HttpServlet {
+@WebServlet("/enrollForm.bo")
+public class BoardEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardDetailController() {
+    public BoardEnrollFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,14 +26,8 @@ public class BoardDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int boardNo=Integer.parseInt(request.getParameter("bno"));
-		
-		Board b=new BoardService().selectBoard(boardNo);
-		//System.out.println(b);
-		request.setAttribute("b", b);
-		request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);
-		
-		
+		//글작성 페이지를 띄워주기만 하는 역할(포워딩 방식)
+		request.getRequestDispatcher("views/board/boardEnrollForm.jsp").forward(request, response);
 	}
 
 	/**

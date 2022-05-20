@@ -12,17 +12,18 @@
     <div id="wrap">
         <h2 class="mb-4 p-2">자유게시판</h2>
         <hr>
-        <form action="" method="post" id="board-Enroll">
+        <form action="<%=contextPath %>/insert.bo" method="post" id="board-Enroll">
+        	<input type="hidden" name="memberNo" value="1"><!-- value값은 로그인한회원번호나중에 바꿔야함 loginUser.getUserNo() -->
             <div class="form-group row">
                 <label class="col-2 col-form-label font-weight-bold">제목</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력해주세요." required>
+                    <input type="text" class="form-control" name="title" id="inputTitle" placeholder="제목을 입력해주세요." required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-2 col-form-label font-weight-bold">내용</label>
                 <div class="col-10">
-                    <textarea class="form-control" id="boardTextarea" placeholder="내용을 입력해주세요." rows="10" required style="resize:none;"></textarea>
+                    <textarea class="form-control" name="content" id="boardTextarea" placeholder="내용을 입력해주세요." rows="10" required style="resize:none;"></textarea>
                 </div>
             </div>
             <!--
@@ -36,12 +37,13 @@
                 </div>
             </div>
             -->
-        </form>
+        
         <hr>
         <div class="float-right">
-            <button class="btn btn-outline-nubigoSub" onclick="location.href='boardList.html';">취소</button>
-            <button class="btn btn-nubigoMain" onclick="insertBoard();">작성완료</button>
+            <button class="btn btn-outline-nubigoSub" onclick="history.back();">취소</button>
+            <button class="btn btn-nubigoMain" type="submit">작성완료</button>
         </div>
+        </form>
     </div>
     <script>
         /*
@@ -49,10 +51,6 @@
             $(this).next('.custom-file-label').html(event.target.files[0].name);
         });
         */
-        function insertBoard(){
-            alert('게시글이 등록되었습니다.');
-            location.href="boardList.html";
-        }
     </script>
 </body>
 </html>

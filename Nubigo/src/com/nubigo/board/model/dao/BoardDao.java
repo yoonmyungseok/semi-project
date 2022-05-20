@@ -74,4 +74,25 @@ public class BoardDao {
 		}
 		return b;
 	}
+	
+	public int insertBoard(Connection conn, Board b) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		String sql=prop.getProperty("insertBoard");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, b.getBoardTitle());
+			pstmt.setString(2, b.getBoardContent());
+			pstmt.setInt(3, Integer.parseInt(b.getMemberId()));
+			
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

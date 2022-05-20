@@ -32,7 +32,7 @@ public class BoardListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Board> list=new BoardService().selectBoardList();
-		System.out.println(list);
+		//System.out.println(list);
 		request.setAttribute("list", list);
 		
 		//응답페이지:
