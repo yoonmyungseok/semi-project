@@ -11,11 +11,11 @@
 <body>
     <div id="footer">
         <div id="footer_1">
-            <a href="" >서비스 소개</a> |
+            <a href="">서비스 소개</a> |
             <a href="">누비고 이용법</a> |
             <a href="">이용약관</a> |
             <a href="">사이트맵</a>
-            <a href="" style="margin : 0; float: right;"><img src="/nbg/resources/images/instagram_white.png"></a>
+            <a href="" style="margin : 0; float: right;" id="instagram"><img src="/nbg/resources/images/instagram_white.png"></a>
             <a href="" style="margin : 0; float: right;"><img src="/nbg/resources/images/youtube_white.png"></a>
         </div>
         <hr>

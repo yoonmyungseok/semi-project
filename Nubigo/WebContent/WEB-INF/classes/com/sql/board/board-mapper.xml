@@ -2,8 +2,17 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<entry key="">
-
+	<entry key="selectBoardList">
+	SELECT BOARD_NO, BOARD_TITLE , BOARD_DATE, MEMBER_ID
+FROM BOARD
+JOIN MEMBER USING (MEMBER_NO)
+WHERE DELETE_STATUS='N'
+	</entry>
+	<entry key="selectBoard">
+	SELECT BOARD_NO, BOARD_TITLE , BOARD_CONTENT , BOARD_DATE , MEMBER_ID
+FROM BOARD
+JOIN MEMBER USING(MEMBER_NO)
+WHERE DELETE_STATUS='N' AND WITHDRAW_STATUS ='N' AND BOARD_NO=?
 	</entry>
 
 </properties>

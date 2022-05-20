@@ -2,8 +2,10 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<entry key="">
-
+	<entry key="selectBoardList">
+	SELECT BOARD_NO, BOARD_TITLE , BOARD_CONTENT , BOARD_DATE, MEMBER_NO  
+FROM BOARD
+WHERE DELETE_STATUS='N'
 	</entry>
 
 </properties>

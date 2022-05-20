@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.nubigo.board.model.vo.Board" %>
+<%
+	ArrayList<Board> list=(ArrayList<Board>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -20,87 +24,32 @@
                 <input type="radio" name="options" id="option2">조회순
             </label>
         </div>
-        <table class="table table-hover table-sm text-center">
+        <table class="table table-hover table-sm text-center list-area">
             <thead class="thead-light">
                 <tr>
                     <th scope="col" style="width:10%;">번호</th>
                     <th scope="col" style="width:55%;">제목</th>
-                    <th scope="col" style="width:15%;">작성자</th>
-                    <th scope="col" style="width:10%;">작성일</th>
-                    <th scope="col" style="width:10%;">조회</th>
+                    <th scope="col" style="width:20%;">작성자</th>
+                    <th scope="col" style="width:15%;">작성일</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>반갑습니다</td>
-                    <td>마시***</td>
-                    <td>2022-05-03</td>
-                    <td>50</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>안녕하세요</td>
-                    <td>호랑이***</td>
-                    <td>2022-05-02</td>
-                    <td>10</td>
-                </tr>
+                <%if(list.isEmpty()){ %>
+                <!-- 리스트가 비어있을 경우 -->
+                    <tr>
+                        <td colspan="4">존재하는 게시글이 없습니다.</td>
+                    </tr>
+                <%}else{ %>
+                <!-- 리스트가 존재할 경우 -->
+                <%for(Board b:list){%>
+                        <tr>
+                            <td><%=b.getBoardNo()%></td>
+                            <td><%=b.getBoardTitle() %></td>
+                            <td><%=b.getMemberId() %></td>
+                            <td><%=b.getBoardDate() %></td>
+                        </tr>
+                    <%} %>
+                <%} %>
             </tbody>
         </table>
         <div class="d-flex mb-5">
@@ -145,9 +94,9 @@
     </div>
     <%@ include file="../common/footer.jsp" %>
     <script>
-        $(function(){
-            $('tr').click(function(){
-                location.href="boardDetailView.jsp";
+        $(function () {
+            $(".list-area>tbody>tr").click(function () {
+                location.href = "<%=contextPath%>/detail.bo?bno=" + $(this).children().eq(0).text();
             })
         })
     </script>

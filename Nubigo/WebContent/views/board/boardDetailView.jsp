@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.nubigo.board.model.vo.Board" %>
+<%
+	Board b=(Board)request.getAttribute("b");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -14,18 +18,16 @@
         <hr>
         <div id="board-detail" class="mb-5">
             <div id="board-detail-title" class="d-flex justify-content-between p-2 border-bottom border-top bg-light">
-                <h5 class="mb-0 font-weight-bold">안녕하세요</h5>
-                <div>2022-05-02 22:47</div>
+                <h5 class="mb-0 font-weight-bold"><%=b.getBoardTitle() %></h5>
+                <div><%=b.getBoardDate() %></div>
             </div>
             <div id="board-detail-header" class="d-flex p-2 border-bottom">
-                <div class="mr-auto">호랑이와사자</div>
-                <div class="mr-2">조회수 <b>20</b></div>
+                <div class="mr-auto"><%=b.getMemberId() %></div>
                 <div>댓글 <b>2</b></div>
             </div>
             <div id="board-detail-content" class="p-2">
                 <p>
-                    그리하였는가? 아니다 그들은 커다란 이상 곧 만천하의 대중을 품에 안고 그들에게 밝은 길을 찾아 주며 그들을 행복스럽고 평화스러운 곳으로 인도하겠다는 커다란 이상을 품었기 때문이다 그러므로 그들은 길지 아니한 목숨을
-                    사는가 싶이 살았으며
+                    <%=b.getBoardContent() %>
                 </p>
             </div>
             <div class="float-right p-2">
@@ -77,7 +79,7 @@
         </div>
         <div class="d-flex justify-content-between mb-3 p-2">
             <a class="btn btn-outline-nubigoMain btn-sm"><i class="bi bi-chevron-left"></i>이전 글</a>
-            <a class="btn btn-nubigoMain btn-sm" href="boardList.html">목록으로</button>
+            <a class="btn btn-nubigoMain btn-sm" href="<%=contextPath%>/list.bo">목록으로</button>
             <a class="btn btn-outline-nubigoMain btn-sm">다음 글<i class="bi bi-chevron-right"></i></a>
         </div>
         <div class="board-comments mb-5">

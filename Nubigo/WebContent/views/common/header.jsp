@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	String contextPath=request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +60,7 @@
                 <a href="">나만의 여행리스트</a>
             </li>
             <li class="menu">
-                <a href="/nbg/views/board/boardList.jsp">자유게시판</a>
+                <a href="<%=contextPath %>/list.bo">자유게시판</a>
             </li>
         </div>
     </div>

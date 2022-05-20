@@ -1,7 +1,6 @@
 package com.nubigo.common;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,55 +12,32 @@ import java.util.Properties;
 public class JDBCTemplate {
 
 	// 1. Connection 객체 생성 (DB 접속) 후 해당 Connection 객체를 반환하는 메소드	
-	public static Connection getConnection() {
-		
-		Connection conn = null;
-		
-		/*
-		// 1) JDBC Driver 등록
-		try {
-			
-			Class.forName("oracle.jdbcdriver.OracleDriver");
-			
-			// 2) DB 와의 접속정보를 갖고있는 Connection 객체 생성
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SERVER", "SERVER");
-			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		*/
-		// 정적 코딩 방식
-		
-		// 동적 코딩 방식
-		Properties prop = new Properties();
-		
-		try {
-			// 배포되는 시점에서는 src 폴더가 WebContent 폴더 내에 없기 때문에
-			// src 를 시작점으로 잡으면 오류 발생 => classes 폴더를 시작점으로 잡아 줄 것
-			String fileName = JDBCTemplate.class.getResource("/sql/driver/driver.properties").getPath();
-			
-			// C:\06_Web-workspace2\JSP_Project\WebContent\WEB-IINF\classes\sql\driver\driver.properties
-			
+	public static Connection getConnection(){
+		//동적 코딩 방식으로 설정값 가져오기
+		Properties prop=new Properties();
+		//읽어들이고자하는 driver.properties 파일의 경로 알아오기
+        //배포되는 시점에서는 src라는 폴더는 WebContent 폴더 내에 없기때문에
+        //src를 시작점으로 잡으면 오류 발생=>classes 폴더를 시작점으로 잡는다
+        String fileName=JDBCTemplate.class.getResource("/sql/driver/driver.properties").getPath();
+        try {
 			prop.load(new FileInputStream(fileName));
-			
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Connection conn=null;
+        	//1)JDBC Driver등록
+		try {
 			Class.forName(prop.getProperty("driver"));
-			
-			conn = DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("username"), prop.getProperty("password"));
-			
-		} catch (FileNotFoundException e) {
+			//2)DB와의 접속 정보를 갖고 있는 Connection 객체 생성
+			conn=DriverManager.getConnection(prop.getProperty("url"),prop.getProperty("username"),prop.getProperty("password"));
+		}catch(ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return conn;
-	}
+    }
 	
 	// 2. 전달받은 Connection 객체를 가지고 commit 해주는 메소드
 	public static void commit(Connection conn) {
