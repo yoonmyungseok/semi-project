@@ -12,7 +12,7 @@
     <title>자유게시판</title>
 </head>
 <body>
-<%@ include file="../common/header.jsp" %>
+<%@ include file="../common/menubar.jsp" %>
     <div id="wrap">
         <h2 class="mb-4 p-2">자유게시판</h2>
         <hr>
@@ -71,11 +71,18 @@
                 </div>
             </div>
             <br clear="both">
-            <!--
+                
             <div class="text-muted p-2 border-bottom">
-                <span>첨부<i class="bi bi-file-earmark-arrow-down-fill"></i>test.txt(824byte)</span>
+                <!--첨부파일이 없을 경우: 첨부파일이 없습니다-->
+                <%if(b.getAttachmentName()==null){ %>
+                첨부파일이 없습니다.
+                <%}else{ %>
+                <!--첨부파일이 있을 경우: 첨부파일의 원본명-->
+                <a class="text-decoration-none text-muted" download="<%=b.getAttachmentName() %>" href="<%=contextPath%>/<%=b.getAttachmentPath() + b.getAttachmentName()%>">
+                <span>첨부<i class="bi bi-file-earmark-arrow-down-fill"></i><%=b.getAttachmentName()%></span></a>
+                <%} %>
             </div>
-            -->
+                
         </div>
         <div class="d-flex justify-content-between mb-3 p-2">
             <a class="btn btn-outline-nubigoMain btn-sm"><i class="bi bi-chevron-left"></i>이전 글</a>
@@ -120,51 +127,51 @@
                     </div>
                 </div>
             </form>
-            <div class="board-comment border-bottom">
-                <div class="d-flex">
-                    <div class="p-2 font-weight-bold">username</div>
-                    <div class="p-2  flex-grow-1 text-muted"><small>2022.04.26 15:11</small></div>
-                    <div class="p-2"><small><span data-toggle="modal" data-target="#comment-report"><i class="bi bi-megaphone"></i>신고</small></div>
-                </div>
-                <div>
-                    <div class="p-2">안녕하세요</div>
-                </div>
+        <div class="board-comment border-bottom">
+            <div class="d-flex">
+                <div class="p-2 font-weight-bold">username</div>
+                <div class="p-2  flex-grow-1 text-muted"><small>2022.04.26 15:11</small></div>
+                <div class="p-2"><small><span data-toggle="modal" data-target="#comment-report"><i class="bi bi-megaphone"></i>신고</small></div>
             </div>
-            <div class="modal fade" id="comment-report" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title"">신고 사유를 선택해주세요.</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+            <div>
+                <div class="p-2">안녕하세요</div>
+            </div>
+        </div>
+        <div class="modal fade" id="comment-report" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"">신고 사유를 선택해주세요.</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body d-flex justify-content-between">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="commentRadio1" name="commentReportRadio" class="custom-control-input">
+                            <label class="custom-control-label" for="commentRadio1">욕설</label>
                         </div>
-                        <div class="modal-body d-flex justify-content-between">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="commentRadio1" name="commentReportRadio" class="custom-control-input">
-                                <label class="custom-control-label" for="commentRadio1">욕설</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="commentRadio2" name="commentReportRadio" class="custom-control-input">
-                                <label class="custom-control-label" for="commentRadio2">음란</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="commentRadio3" name="commentReportRadio" class="custom-control-input">
-                                <label class="custom-control-label" for="commentRadio3">홍보 및 반복글</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="commentRadio4" name="commentReportRadio" class="custom-control-input">
-                                <label class="custom-control-label" for="commentRadio4">기타</label>
-                            </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="commentRadio2" name="commentReportRadio" class="custom-control-input">
+                            <label class="custom-control-label" for="commentRadio2">음란</label>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-nubigoSub" id="commentReportBtn">신고</button>
-                            <button type="button" class="btn btn-nubigoMain" data-dismiss="modal">취소</button>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="commentRadio3" name="commentReportRadio" class="custom-control-input">
+                            <label class="custom-control-label" for="commentRadio3">홍보 및 반복글</label>
                         </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="commentRadio4" name="commentReportRadio" class="custom-control-input">
+                            <label class="custom-control-label" for="commentRadio4">기타</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-nubigoSub" id="commentReportBtn">신고</button>
+                        <button type="button" class="btn btn-nubigoMain" data-dismiss="modal">취소</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     <script>
         $(function(){
             $('#boardReportBtn').click(function(){

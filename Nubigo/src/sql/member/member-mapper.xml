@@ -2,8 +2,12 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<entry key="">
-
+	<entry key="loginMember">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_ID = ?
+		  AND MEMBER_PWD = ?
+		  AND WITHDRAW_STATUS = 'N'
 	</entry>
 
 </properties>

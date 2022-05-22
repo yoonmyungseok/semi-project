@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap');
+
+div {
+    font-family: 'IBM Plex Sans KR';
+    box-sizing: border-box;
+}
+
+.login-wrap {
+    margin: auto;
+    width: 1200px;
+    height: 750px;
+    overflow : hidden;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+}
+
+.login-form-background {
+    background-color: white;
+    width: 400px;
+    height: 500px;
+    z-index: 1;
+    position: absolute;
+    top: 95px;
+    right: 200px;
+}
+
+#login-form-login {
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    position: absolute;
+    top : 15%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+form {
+    margin-top: 80px;
+    position: absolute;
+    top : 15%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+#login-id-input, #login-pwd-input {
+    width: 270px;
+    height: 32px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    outline: 0px;
+}
+
+#login-id-input:hover, #login-pwd-input:hover {
+    border-color: #FFCA29;;
+}
+
+#login-idcheckbox-idsave {
+    font-size: 13px;
+}
+
+.login-id-pwd-search{
+    margin-top: 1px;
+    text-decoration: none;
+    font-size: 13px;
+    float: right;
+    color: black;
+}
+
+.login-id-pwd-search:hover{
+    color: #00b8ff;
+}
+
+#login-loginbutton, #login-signupbutton {
+    width: 270px;
+    height: 38px;
+    margin-bottom: 11px;
+}
+
+#login-loginbutton {
+    background-color: #00b8ff;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+#login-signupbutton {
+    background-color: #FFCA29;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+}

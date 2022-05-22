@@ -39,13 +39,15 @@ public class Board {
 	}
 
 	//게시글 상세 조회용
-	public Board(int boardNo, String boardTitle, String boardContent, Date boardDate, String memberId) {
+	public Board(int boardNo, String boardTitle, String boardContent, Date boardDate, String memberId, String attachmentPath, String attachmentName) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
 		this.boardDate = boardDate;
 		this.memberId = memberId;
+		this.attachmentPath=attachmentPath;
+		this.attachmentName=attachmentName;
 	}
 
 	public int getBoardNo() {

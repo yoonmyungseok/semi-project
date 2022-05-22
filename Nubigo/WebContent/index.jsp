@@ -8,6 +8,6 @@
 <title>title</title>
 </head>
 <body>
-    <%@ include file="views/common/header.jsp" %>
+    <%@ include file="views/common/mainPage.jsp" %>
 </body>
 </html>

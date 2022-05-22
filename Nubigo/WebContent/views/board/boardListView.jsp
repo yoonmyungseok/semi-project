@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.nubigo.board.model.vo.Board" %>
+<%@ page import="java.util.ArrayList, com.nubigo.board.model.vo.Board, com.nubigo.common.model.vo.PageInfo" %>
 <%
 	ArrayList<Board> list=(ArrayList<Board>)request.getAttribute("list");
+PageInfo pi=(PageInfo)request.getAttribute("pi");
+
+//페이징바 관련 변수
+int currentPage=pi.getCurrentPage();
+int startPage=pi.getStartPage();
+int endPage=pi.getEndPage();
+int maxPage=pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -12,7 +19,7 @@
     <title>자유게시판</title>
 </head>
 <body>
-    <%@ include file="../common/header.jsp" %>
+    <%@ include file="../common/menubar.jsp" %>
     <div id="wrap">
         <h2 class="mb-4 p-2">자유게시판</h2>
         <hr>
@@ -21,7 +28,7 @@
                 <input type="radio" name="options" id="option1" checked>최신순
             </label>
             <label class="btn btn-outline-nubigoMain">
-                <input type="radio" name="options" id="option2">조회순
+                <input type="radio" name="options" id="option2">오래된순
             </label>
         </div>
         <table class="table table-hover table-sm text-center list-area">
@@ -91,6 +98,23 @@
                 </li>
             </ul>
         </nav>
+        <!--페이징바-->
+        <div align="center" class="paging-area">
+            <%if(currentPage!=1){ %>
+                <button onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage-1%>';">&lt;</button>
+            <%}%>     
+            <%for(int p=startPage;p<=endPage;p++){ %>
+            <% if(p!=currentPage){ %>
+                <button onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=p%>';"><%=p %></button>
+                <%}else{ %>
+                <!-- 현재 내가 보고있는 페이지일 경우는 클릭 안되게끔 -->
+                <button disabled><%=p %></button>
+                <%} %>
+            <%} %>
+            <%if(currentPage!=maxPage){ %>
+                <button onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage+1%>';">&gt;</button>
+            <%}%>
+        </div>
     </div>
     <%@ include file="../common/footer.jsp" %>
     <script>
