@@ -2,8 +2,11 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<entry key="">
-
+	<entry key="boardReport">
+    INSERT INTO REPORT (REPORT_NO, BOARD_NO) VALUES(SEQ_RNO.NEXTVAL, ?)
 	</entry>
+	<entry key="boardReportContent">
+    INSERT INTO REPORT_TYPE VALUES (SEQ_RNO.CURRVAL, ?)
+    </entry>
 
 </properties>

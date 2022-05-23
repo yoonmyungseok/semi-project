@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.nubigo.board.model.vo.Board;
 import com.nubigo.common.model.vo.PageInfo;
+import com.nubigo.member.model.vo.Reply;
 
 public class BoardDao {
 	//전역변수로 Properties 타입의 객체 하나 만들어두기
@@ -132,5 +133,126 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	public int insertReply(Connection conn, Reply r) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		String sql=prop.getProperty("insertReply");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, r.getReplyContent());
+			pstmt.setInt(2, r.getBoardNo());
+			pstmt.setInt(3, r.getMemberNo());
+			
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	public ArrayList<Reply> selectReplyList(Connection conn, int boardNo){
+		ArrayList<Reply> list=new ArrayList<>();
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		String sql=prop.getProperty("selectReplyList");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Reply(
+						rset.getInt("COMMENT_NO"),
+						rset.getString("COMMENT_CONTENT"),
+						rset.getDate("COMMENT_DATE"),
+						rset.getString("MEMBER_ID")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	public int deleteBoard(Connection conn, int boardNo) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		
+		String sql=prop.getProperty("deleteBoard");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateBoard(Connection conn, Board b) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		
+		String sql=prop.getProperty("updateBoard");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,b.getBoardTitle());
+			pstmt.setString(2, b.getBoardContent());
+			pstmt.setString(3, b.getAttachmentPath());
+			pstmt.setString(4, b.getAttachmentName());
+			pstmt.setInt(5, b.getBoardNo());
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public ArrayList<Board> boardSearch(Connection conn, String search, String keyword){
+		ArrayList<Board> list=new ArrayList<>();
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		String sql="";
+		switch(keyword) {
+			case "제목내용" : sql=prop.getProperty("boardSearchAll"); break;
+			case "제목" : sql=prop.getProperty("boardSearchTitle"); break;
+			case "내용" : sql=prop.getProperty("boardSearchContent"); break;
+			case "작성자" : sql=prop.getProperty("boardSearchId"); break;
+		}
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+
+
+			pstmt.setString(1, "%"+search+"%");
+			rset=pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new Board(
+						rset.getInt("BOARD_NO"),
+						rset.getString("BOARD_TITLE"),
+						rset.getDate("BOARD_DATE"),
+						rset.getString("MEMBER_ID")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 }
