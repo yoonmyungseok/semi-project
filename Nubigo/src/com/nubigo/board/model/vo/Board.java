@@ -11,13 +11,15 @@ public class Board {
     private String attachmentPath;//ATTACHMENT_PATH VARCHAR2(1000),
     private String attachmentName;//ATTACHMENT_NAME VARCHAR2(200),
     private String memberId;
+    private int count;
+    private int replyCount;
     
 	public Board() {
 		super();
 	}
 
 	public Board(int boardNo, String boardTitle, String boardContent, Date boardDate, String deleteStatus,
-			String attachmentPath, String attachmentName, String memberId) {
+			String attachmentPath, String attachmentName, String memberId,int count, int replyCount) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -27,19 +29,23 @@ public class Board {
 		this.attachmentPath = attachmentPath;
 		this.attachmentName = attachmentName;
 		this.memberId=memberId;
+		this.count=count;
+		this.replyCount=replyCount;
 	}
 	
 	//게시글 전체 조회용
-	public Board(int boardNo, String boardTitle, Date boardDate, String memberId) {
+	public Board(int boardNo, String boardTitle, Date boardDate, String memberId, int count, int replyCount) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
 		this.boardDate = boardDate;
 		this.memberId = memberId;
+		this.count=count;
+		this.replyCount=replyCount;
 	}
 
 	//게시글 상세 조회용
-	public Board(int boardNo, String boardTitle, String boardContent, Date boardDate, String memberId, String attachmentPath, String attachmentName) {
+	public Board(int boardNo, String boardTitle, String boardContent, Date boardDate, String memberId, String attachmentPath, String attachmentName, int count, int replyCount) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -48,6 +54,8 @@ public class Board {
 		this.memberId = memberId;
 		this.attachmentPath=attachmentPath;
 		this.attachmentName=attachmentName;
+		this.count=count;
+		this.replyCount=replyCount;
 	}
 
 	public int getBoardNo() {
@@ -115,11 +123,32 @@ public class Board {
 		this.memberId = memberId;
 	}
 
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	
+	public int getReplyCount() {
+		return replyCount;
+	}
+
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
+	}
+
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
 				+ ", boardDate=" + boardDate + ", deleteStatus=" + deleteStatus + ", attachmentPath=" + attachmentPath
-				+ ", attachmentName=" + attachmentName + ", memberId=" + memberId + "]";
+				+ ", attachmentName=" + attachmentName + ", memberId=" + memberId + ", count=" + count + ", replyCount="
+				+ replyCount + "]";
 	}
+
+
+	
 
 }

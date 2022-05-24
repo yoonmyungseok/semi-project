@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link href="resources/css/main-imageslide-style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/main-imageslide-style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -20,8 +20,8 @@
     <!--아이콘-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!--customCSS-->
-    <link rel="stylesheet" href="/nbg/resources/css/style.css">
-    <link rel="stylesheet" href="/nbg/resources/css/header-style.css" >
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header-style.css" >
     <title>header</title>
 </head>
 <body>
@@ -39,7 +39,7 @@
     <!-- 헤더 -->
 	<div class="header-wrap">
 	    <div id="header">
-	        <div id="header_1" style="margin-top:10px"><a href=""><img src="resources/images/Nubigo_logo_1.png" class="logo"></a></div> <!-- 로고 이미지 파일(클릭 시 홈 화면 이동 구현 할거면 contextPath 설정하세요) -->
+	        <div id="header_1" style="margin-top:10px"><a href="<%=contextPath%>"><img src="resources/images/Nubigo_logo_1.png" class="logo"></a></div> <!-- 로고 이미지 파일(클릭 시 홈 화면 이동 구현 할거면 contextPath 설정하세요) -->
 			<div id="header_2">
 		    	<div class="search">
 			    	<form action="" id="headerform" style="position:relative;">

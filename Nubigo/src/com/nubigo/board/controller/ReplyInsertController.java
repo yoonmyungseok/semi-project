@@ -31,6 +31,8 @@ public class ReplyInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
 		String replyContent=request.getParameter("content");
 		int boardNo=Integer.parseInt(request.getParameter("bno"));
 		
@@ -44,8 +46,18 @@ public class ReplyInsertController extends HttpServlet {
 		r.setMemberNo(userNo);
 		
 		int result=new BoardService().insertReply(r);
+		
+		if(result>0) {
+			request.getSession().setAttribute("alertMsg", "성공적으로 댓글이 등록되었습니다");
+			response.sendRedirect(request.getContextPath()+"/detail.bo?bno="+boardNo);
+		}else {
+			request.setAttribute("errorMsg", "게시글 등록 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
+		/*
 		response.setContentType("text/html; charset=utf-8");
 		response.getWriter().print(result);
+		*/
 	}
 
 	/**

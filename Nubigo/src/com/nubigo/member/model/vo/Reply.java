@@ -1,17 +1,16 @@
 package com.nubigo.member.model.vo;
 
-import java.sql.Date;
 
 public class Reply {
 	private int replyNo;//COMMENT_NO
 	private String replyContent;//COMMENT_CONTENT
-	private Date replyDate;//COMMENT_DATE
+	private String replyDate;//COMMENT_DATE
 	private String status;//STATUS
 	private String memberId;//MEMBER_ID
 	private int boardNo;//BOARD_NO
 	private int memberNo;
 	
-	public Reply(int replyNo, String replyContent, Date replyDate, String status, String memberId, int boardNo, int memberNo) {
+	public Reply(int replyNo, String replyContent, String replyDate, String status, String memberId, int boardNo, int memberNo) {
 		super();
 		this.replyNo = replyNo;
 		this.replyContent = replyContent;
@@ -22,7 +21,7 @@ public class Reply {
 		this.memberNo=memberNo;
 	}
 	
-	public Reply(int replyNo, String replyContent, Date replyDate, String memberId) {
+	public Reply(int replyNo, String replyContent, String replyDate, String memberId) {
 		super();
 		this.replyNo = replyNo;
 		this.replyContent = replyContent;
@@ -50,11 +49,11 @@ public class Reply {
 		this.replyContent = replyContent;
 	}
 
-	public Date getReplyDate() {
+	public String getReplyDate() {
 		return replyDate;
 	}
 
-	public void setReplyDate(Date replyDate) {
+	public void setReplyDate(String replyDate) {
 		this.replyDate = replyDate;
 	}
 

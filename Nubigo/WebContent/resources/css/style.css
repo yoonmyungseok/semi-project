@@ -152,7 +152,14 @@
     box-shadow: 0 0 0 0.2rem #FFCA29;
 }
 
-
+/*페이징바*/
+.page-item.active .page-link{
+    background-color: #FFCA29 !important;
+    border-color: #FFCA29 !important;
+}
+.page-link{
+    color:#000;
+}
 
 #wrap {
     width: 1200px;

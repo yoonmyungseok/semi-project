@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.nubigo.board.model.vo.Board" %>
+<%@ page import="com.nubigo.board.model.vo.Board, com.nubigo.member.model.vo.Reply, java.util.ArrayList" %>
 <%
 	Board b=(Board)request.getAttribute("b");
+    ArrayList<Reply> reply=(ArrayList<Reply>)request.getAttribute("reply");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -23,7 +24,8 @@
             </div>
             <div id="board-detail-header" class="d-flex p-2 border-bottom">
                 <div class="mr-auto"><%=b.getMemberId() %></div>
-                <div>댓글 <b>2</b></div>
+                <div class="mr-1">조회수 <b><%=b.getCount()%></b></div>
+                <div>댓글 <b><%=b.getReplyCount() %></b></div>
             </div>
             <div id="board-detail-content" class="p-2">
                 <p>
@@ -90,17 +92,19 @@
         </div>
         <div class="d-flex justify-content-between mb-3 p-2">
             <a class="btn btn-outline-nubigoMain btn-sm"><i class="bi bi-chevron-left"></i>이전 글</a>
-            <a class="btn btn-nubigoMain btn-sm" href="<%=contextPath%>/list.bo?currentPage=1">목록으로</button>
+            <a class="btn btn-nubigoMain btn-sm" href="<%=contextPath%>/list.bo?currentPage=1">목록으로</a>
             <a class="btn btn-outline-nubigoMain btn-sm">다음 글<i class="bi bi-chevron-right"></i></a>
         </div>
         <div class="board-comments mb-5">
-            <form class="border rounded-lg p-3 mb-4">
+            <form class="border rounded-lg p-3 mb-4" action="<%=contextPath%>/rinsert.bo" method="post">
                 <div class="">
                     <label class="font-weight-bold">댓글 쓰기</label>
                     <%if(loginUser!=null){ %>
                     <div class="d-flex">
-                        <textarea class="form-control w-100" id="replyContent" rows="3" style="resize: none;"></textarea>
-                        <button class="btn btn-nubigoSub flex-shrink-0" onclick="insertReply();">등록</button>
+                        <textarea class="form-control w-100" id="replyContent" rows="3" style="resize: none;" name="content"></textarea>
+                        <input type="hidden" name="bno" value="<%=b.getBoardNo()%>">
+                        <!--<button class="btn btn-nubigoSub flex-shrink-0" onclick="insertReply();">등록</button>-->
+                        <button class="btn btn-nubigoSub flex-shrink-0" type="submit">등록</button>
                     </div>
                     <%}else{ %>
                     <div class="d-flex">
@@ -112,76 +116,79 @@
             </form>
         </div>
             <div class="p-2 border rounded bg-light">
-                댓글<b>2</b>
+                댓글 <b><%=b.getReplyCount() %></b>
             </div>
-            <div id="reply-board">
-	            <div class="board-comment border-bottom">
-	                <div class="d-flex">
-	                    <div class="p-2 font-weight-bold">마시멜로우</div>
-	                    <div class="p-2 flex-grow-1 text-muted"><small>2022.04.27 15:11</small></div>
-	                    <div class="p-2"><small><span onclick="commentUpdate();"><i class="bi bi-pencil"></i>수정</span><span onclick="commentDelete();"><i class="bi bi-trash ml-2"></i>삭제</span></small></div>
-	                </div>
-	                <div>
-	                    <div class="p-2">반갑뜹니다</div>
-	                </div> 
-	            </div> 
-	            <form class="d-none" id="commentUpdateShow">
-	                <div class="p-2">
-	                    <div class="d-flex">
-	                        <label for="commentUpdate" class="font-weight-bold flex-grow-1"><i class="bi bi-arrow-return-right"></i>댓글 수정</label>
-	                        <small><span onclick="commentUpdate();"><i class="bi bi-x-lg"></i>닫기</span></small>
-	                    </div>
-	                    <div class="d-flex">
-	                        <textarea class="form-control w-100" id="commentUpdate" rows="3" style="resize: none;"></textarea>
-	                        <button class="btn btn-nubigoSub flex-shrink-0" onclick="commentInsert();">등록</button>
-	                    </div>
-	                </div>
-	            </form>
-	        </div>
-        <div class="board-comment border-bottom">
-            <div class="d-flex">
-                <div class="p-2 font-weight-bold">username</div>
-                <div class="p-2  flex-grow-1 text-muted"><small>2022.04.26 15:11</small></div>
-                <div class="p-2"><small><span data-toggle="modal" data-target="#comment-report"><i class="bi bi-megaphone"></i>신고</small></div>
+            <%if(reply.isEmpty()){ %>
+            <div class="board-comment border-bottom reply-board">
+                <div class="p-2">댓글이 없습니다.</div>
             </div>
-            <div>
-                <div class="p-2">안녕하세요</div>
-            </div>
-        </div>
-        <div class="modal fade" id="comment-report" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title"">신고 사유를 선택해주세요.</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body d-flex justify-content-between">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="commentRadio1" name="commentReportRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="commentRadio1">욕설</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="commentRadio2" name="commentReportRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="commentRadio2">음란</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="commentRadio3" name="commentReportRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="commentRadio3">홍보 및 반복글</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="commentRadio4" name="commentReportRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="commentRadio4">기타</label>
+            <%}else{ %>
+            <%for(Reply r:reply){ %>     
+            <div class="board-comment border-bottom reply-board">
+                <div>
+                    <div class="d-flex">
+                        <div class="p-2 font-weight-bold"><%=r.getMemberId() %></div>
+                        <div class="p-2 flex-grow-1 text-muted"><small><%=r.getReplyDate()%></small></div>
+                        <div class="p-2">
+                            <small>
+                                <span class="replyUpdateBtn" data-reply-no="<%=r.getReplyNo()%>" data-reply-member="<%=r.getMemberId()%>"><i class="bi bi-pencil"></i>수정</span>
+                                <span class="replyDeleteBtn" data-reply-no="<%=r.getReplyNo()%>" data-reply-member="<%=r.getMemberId()%>"><i class="bi bi-trash ml-2"></i>삭제</span>
+                            </small>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-nubigoSub" id="commentReportBtn">신고</button>
-                        <button type="button" class="btn btn-nubigoMain" data-dismiss="modal">취소</button>
+                    <div>
+                        <div class="p-2"><%=r.getReplyContent()%></div>
+                    </div> 
+                </div> 
+                <form class="d-none commentUpdateShow">
+                    <div class="p-2">
+                        <div class="d-flex">
+                            <label for="commentUpdate" class="font-weight-bold flex-grow-1"><i class="bi bi-arrow-return-right"></i>댓글 수정</label>
+                            <small><span class="replyUpdateBtn"><i class="bi bi-x-lg"></i>닫기</span></small>
+                        </div>
+                        <div class="d-flex">
+                            <textarea class="form-control w-100" id="commentUpdate" rows="3" style="resize: none;"></textarea>
+                            <button class="btn btn-nubigoSub flex-shrink-0" onclick="commentInsert();">등록</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+                <%} %>
+            <%} %>
+            <div class="modal fade" id="comment-report" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">신고 사유를 선택해주세요.</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body d-flex justify-content-between">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="commentRadio1" name="commentReportRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="commentRadio1">욕설</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="commentRadio2" name="commentReportRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="commentRadio2">음란</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="commentRadio3" name="commentReportRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="commentRadio3">홍보 및 반복글</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="commentRadio4" name="commentReportRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="commentRadio4">기타</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-nubigoSub" id="commentReportBtn">신고</button>
+                            <button type="button" class="btn btn-nubigoMain" data-dismiss="modal">취소</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
     <script>
         $(function(){
@@ -193,9 +200,35 @@
                     alert('신고가 완료되었습니다.');
                     location.reload();
                 }
-            })
+            });
 
-            selectReplyList();
+            $(".replyDeleteBtn").click(function () {
+                if (confirm("댓글을 삭제하시겠습니까?") == true) {    //확인
+                    $.ajax({
+                        type: "POST",
+                        url: "rdelete.bo",
+                        traditional: true,
+                        data: {
+                            bno: '<%=b.getBoardNo()%>',
+                            rno: $(this).data("replyNo"),
+                        },
+                        success: function (result) {
+                            if (result > 0) {
+                                alert('댓글 삭제 성공');
+                                location.reload();
+                            } else {
+                                alert('댓글 삭제 실패');
+                            }
+                        },
+                        error: function () {
+                            console.log('댓글 삭제 통신 실패');
+                        }
+                    });
+                    //alert('삭제가 완료되었습니다.');
+                } else {   //취소
+                    return false;
+                }
+            });
         });
         function reportBoard(){
             if (!$('input[name=boardReport]:checked').val()) {
@@ -247,69 +280,11 @@
                 return false;
             }
         }
-        function insertReply() {
-            $.ajax({
-                url: "rinsert.bo",
-                data: {
-                    content: $("#replyContent").val(),
-                    bno: '<%= b.getBoardNo() %>'
-                },
-                type: "post",
-                success: function (result) {
-
-                    // result 가 1 이라면 성공 / 0 이라면 실패
-                    if (result > 0) { // 댓글작성 성공
-
-                        // 갱신된 댓글 리스트 조회
-                        selectReplyList();
-
-                        // textarea 초기화
-                        $("#replyContent").val("");
-                    }
-                    else { // 댓글작성 실패
-                        alert("댓글 등록에 실패했습니다.");
-                    }
-                },
-                error: function () {
-                    console.log("댓글 작성용 ajax 통신 실패!");
-                }
-            });
-        }
-        function selectReplyList(){
-            $.ajax({
-                url: "rlist.bo",
-                data: {bno:'<%=b.getBoardNo()%>'},
-                success: function (result) {
-                    var resultStr="";
-                    for (var i = 0; i < result.length; i++) {
-                        resultStr+=
-                        '<div class="board-comment border-bottom">'+
-                            '<div class="d-flex">'+
-                                '<div class="p-2 font-weight-bold">'+result[i].memberId+'</div>'+
-                                '<div class="p-2 flex-grow-1 text-muted"><small>'+result[i].replyDate+'</small></div>'+
-                            '</div>'+
-                            '<div>'+
-                                '<div class="p-2">'+result[i].replyContent+'</div>'+
-                            '</div>'+
-                        '</div>';
-                    }
-                    $("#reply-board").html(resultStr);
-                },
-                error: function () {
-                    console.log("댓글리스트 조회용 ajax 통신 실패!");
-                }
-            });
-        }
-        function commentDelete() {
-            if (confirm("댓글을 삭제하시겠습니까?") == true) {    //확인
-                alert('삭제가 완료되었습니다.');
-            } else {   //취소
-                return false;
-            }
-        }
-        function commentUpdate(){
-            $("#commentUpdateShow").toggleClass("d-none");
-        }
+        $(".replyUpdateBtn").click(function(){
+            var idx= $(this).closest(".reply-board").children("form");
+            $(idx).toggleClass("d-none");
+            $('.commentUpdateShow').not($(idx)).addClass('d-none');   
+        })
     </script>
 </body>
 </html>

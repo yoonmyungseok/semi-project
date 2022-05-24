@@ -21,6 +21,18 @@ public class BoardService {
 		return list;
 	}
 	
+	public int increaseCount(int boardNo) {
+		Connection conn=getConnection();
+		int result=new BoardDao().increaseCount(conn, boardNo);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
 	public Board selectBoard(int boardNo) {
 		Connection conn=getConnection();
 		Board b=new BoardDao().selectBoard(conn, boardNo);
@@ -90,10 +102,22 @@ public class BoardService {
 		return result;
 	}
 	
-	public ArrayList<Board> boardSearch(String search, String keyword){
+	public ArrayList<Board> boardSearch(String search, String keyword, PageInfo pi){
 		Connection conn=getConnection();
-		ArrayList<Board> list=new BoardDao().boardSearch(conn, search, keyword);
+		ArrayList<Board> list=new BoardDao().boardSearch(conn, search, keyword, pi);
 		close(conn);
 		return list;
+	}
+	
+	public int deleteReply(Reply r) {
+		Connection conn=getConnection();
+		int result=new BoardDao().deleteReply(conn,r);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 }

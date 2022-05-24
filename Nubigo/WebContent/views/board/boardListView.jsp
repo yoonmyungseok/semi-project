@@ -3,7 +3,7 @@
 <%
 	ArrayList<Board> list=(ArrayList<Board>)request.getAttribute("list");
 PageInfo pi=(PageInfo)request.getAttribute("pi");
-String sort=String.valueOf(request.getAttribute("sort"));
+
 //페이징바 관련 변수
 int currentPage=pi.getCurrentPage();
 int startPage=pi.getStartPage();
@@ -24,32 +24,38 @@ int maxPage=pi.getMaxPage();
         <h2 class="mb-4 p-2">자유게시판</h2>
         <hr>
         <div class="btn-group btn-group-toggle mb-2 btn-group-sm" data-toggle="buttons">
-            <button class="btn btn-outline-nubigoMain active" type="radio" name="options" id="option1" value="new">최신순</button>
-            <button class="btn btn-outline-nubigoMain" type="radio" name="options" id="option2" value="old">오래된순</button>
+            <label class="btn btn-outline-nubigoMain active" >
+                <input type="radio" name="options" id="option1" value="new" checked> 최신순
+            </label>
+            <label class="btn btn-outline-nubigoMain">
+                <input type="radio" name="options" id="option2" value="old"> 조회순
+            </label>
         </div>
         <table class="table table-hover table-sm text-center list-area">
             <thead class="thead-light">
                 <tr>
                     <th scope="col" style="width:10%;">번호</th>
                     <th scope="col" style="width:55%;">제목</th>
-                    <th scope="col" style="width:20%;">작성자</th>
+                    <th scope="col" style="width:15%;">작성자</th>
                     <th scope="col" style="width:15%;">작성일</th>
+                    <th scope="col" style="width:5%;">조회</th>
                 </tr>
             </thead>
             <tbody>
                 <%if(list.isEmpty()){ %>
                 <!-- 리스트가 비어있을 경우 -->
                     <tr style="pointer-events: none;">
-                        <td colspan="4">존재하는 게시글이 없습니다.</td>
+                        <td colspan="5">존재하는 게시글이 없습니다.</td>
                     </tr>
                 <%}else{ %>
                 <!-- 리스트가 존재할 경우 -->
                 <%for(Board b:list){%>
                         <tr>
                             <td><%=b.getBoardNo()%></td>
-                            <td><%=b.getBoardTitle() %></td>
+                            <td><%=b.getBoardTitle() %> <%if(b.getReplyCount()==0){ %><%}else{ %><small><b>[<%=b.getReplyCount() %>]</b></small><%} %></td>
                             <td><%=b.getMemberId() %></td>
                             <td><%=b.getBoardDate() %></td>
+                            <td><%=b.getCount() %></td>
                         </tr>
                     <%} %>
                 <%} %>
@@ -57,6 +63,7 @@ int maxPage=pi.getMaxPage();
         </table>
         <div class="d-flex mb-5">
             <form class="form-inline" method="get" action="<%=contextPath %>/boardSearch.bo">
+                <input type="hidden" name="currentPage" value="1">
                 <div class="mr-sm-2">
                     <select class="custom-select" name="keyword">
                         <option value="제목내용" selected>제목+내용</option>
@@ -76,42 +83,32 @@ int maxPage=pi.getMaxPage();
             <a class="btn btn-nubigoMain ml-auto" type="button" href="<%=contextPath%>/enrollForm.bo">글쓰기</a>
             <%} %>
         </div>
+        <!--페이징바-->
         <nav>
             <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <button class="page-link" aria-label="Previous">
+                <%if(currentPage!=1){ %>
+                <li class="page-item">
+                    <button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage-1%>';">
                         <span aria-hidden="true">&laquo;</span>
                     </button>
                 </li>
-                <li class="page-item active"><button class="page-link">1</button></li>
-                <li class="page-item"><button class="page-link" >2</button></li>
-                <li class="page-item"><button class="page-link" >3</button></li>
-                <li class="page-item"><button class="page-link" >4</button></li>
-                <li class="page-item"><button class="page-link" >5</button></li>
+                <%}%>
+                <%for(int p=startPage;p<=endPage;p++){ %>
+                    <% if(p!=currentPage){ %>
+                    <li class="page-item"><button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=p%>';"><%=p %></button></li>
+                    <%}else{ %>
+                    <li class="page-item active"><button class="page-link"><%=p %></button></li>
+                    <%} %>
+                <%} %>
+                <%if(currentPage!=maxPage){ %>
                 <li class="page-item">
-                    <button class="page-link" aria-label="Next">
+                    <button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage+1%>';">
                         <span aria-hidden="true">&raquo;</span>
                     </button>
                 </li>
+                <%}%>
             </ul>
         </nav>
-        <!--페이징바-->
-        <div align="center" class="paging-area">
-            <%if(currentPage!=1){ %>
-                <button onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage-1%>';">&lt;</button>
-            <%}%>     
-            <%for(int p=startPage;p<=endPage;p++){ %>
-            <% if(p!=currentPage){ %>
-                <button onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=p%>';"><%=p %></button>
-                <%}else{ %>
-                <!-- 현재 내가 보고있는 페이지일 경우는 클릭 안되게끔 -->
-                <button disabled><%=p %></button>
-                <%} %>
-            <%} %>
-            <%if(currentPage!=maxPage){ %>
-                <button onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage+1%>';">&gt;</button>
-            <%}%>
-        </div>
     </div>
     <%@ include file="../common/footer.jsp" %>
     <script>
