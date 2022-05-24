@@ -10,10 +10,12 @@ public class Report {
 	private int replyNo;//COMMENT_NO
 	private int reviewNo;//REVIEW_NO
 	private String reportType;
+	private String reportContent;
+	
 	public Report() {
 		super();
 	}
-	public Report(int reportNo, Date reportDate, String responseStatus, int boardNo, int replyNo, int reviewNo, String reportType) {
+	public Report(int reportNo, Date reportDate, String responseStatus, int boardNo, int replyNo, int reviewNo, String reportType, String reportContent) {
 		super();
 		this.reportNo = reportNo;
 		this.reportDate = reportDate;
@@ -22,6 +24,7 @@ public class Report {
 		this.replyNo = replyNo;
 		this.reviewNo = reviewNo;
 		this.reportType=reportType;
+		this.reportContent=reportContent;
 	}
 	public int getReportNo() {
 		return reportNo;
@@ -65,13 +68,18 @@ public class Report {
 	public void setReportType(String reportType) {
 		this.reportType = reportType;
 	}
+	
+	public String getReportContent() {
+		return reportContent;
+	}
+	public void setReportContent(String reportContent) {
+		this.reportContent = reportContent;
+	}
 	@Override
 	public String toString() {
 		return "Report [reportNo=" + reportNo + ", reportDate=" + reportDate + ", responseStatus=" + responseStatus
 				+ ", boardNo=" + boardNo + ", replyNo=" + replyNo + ", reviewNo=" + reviewNo + ", reportType="
-				+ reportType + "]";
+				+ reportType + ", reportContent=" + reportContent + "]";
 	}
-	
-	
-	
+
 }

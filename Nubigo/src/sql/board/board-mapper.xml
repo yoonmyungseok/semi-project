@@ -98,4 +98,8 @@ WHERE RNUM BETWEEN ? AND ?
     UPDATE COMMENTS SET STATUS='Y' 
 WHERE COMMENT_NO=? AND BOARD_NO=?
     </entry>
+    <entry key="updateReply">
+    UPDATE COMMENTS SET COMMENT_CONTENT=?
+WHERE COMMENT_NO=? AND BOARD_NO=?
+    </entry>
 </properties>

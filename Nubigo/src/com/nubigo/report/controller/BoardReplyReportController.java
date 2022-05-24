@@ -1,4 +1,4 @@
-package com.nubigo.board.controller;
+package com.nubigo.report.controller;
 
 import java.io.IOException;
 
@@ -8,20 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.nubigo.board.model.service.BoardService;
-import com.nubigo.member.model.vo.Reply;
+import com.nubigo.report.model.service.ReportService;
+import com.nubigo.report.model.vo.Report;
 
 /**
- * Servlet implementation class ReplyDeleteController
+ * Servlet implementation class BoardReplyReportController
  */
-@WebServlet("/rdelete.bo")
-public class ReplyDeleteController extends HttpServlet {
+@WebServlet("/rreport.bo")
+public class BoardReplyReportController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReplyDeleteController() {
+    public BoardReplyReportController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +32,14 @@ public class ReplyDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int boardNo=Integer.parseInt(request.getParameter("bno"));
 		int replyNo=Integer.parseInt(request.getParameter("rno"));
+		String report=request.getParameter("report");
 		
-		Reply r=new Reply();
+		Report r=new Report();
 		r.setBoardNo(boardNo);
 		r.setReplyNo(replyNo);
+		r.setReportContent(report);
 		
-		int result=new BoardService().deleteReply(r);
+		int result=new ReportService().boardReplyReport(r);
 
 		response.setContentType("text/html; charset=utf-8");
 		response.getWriter().print(result);

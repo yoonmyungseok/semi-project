@@ -53,4 +53,23 @@ public class ReportDao {
 		}
 		return result;
 	}
+	
+	public int boardReplyReport(Connection conn, Report r) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		String sql=prop.getProperty("boardReplyReport");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, r.getBoardNo());
+			pstmt.setInt(2, r.getReplyNo());
+			pstmt.setString(3, r.getReportContent());
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

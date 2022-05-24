@@ -300,4 +300,23 @@ public class BoardDao {
 		}
 		return result;
 	}
+	
+	public int updateReply(Connection conn, Reply r) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		String sql=prop.getProperty("updateReply");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, r.getReplyContent());
+			pstmt.setInt(2, r.getReplyNo());
+			pstmt.setInt(3, r.getBoardNo());
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }
