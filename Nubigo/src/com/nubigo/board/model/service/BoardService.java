@@ -14,9 +14,15 @@ import com.nubigo.common.model.vo.PageInfo;
 import com.nubigo.member.model.vo.Reply;
 
 public class BoardService {
-	public ArrayList<Board> selectBoardList(PageInfo pi){
+	public ArrayList<Board> selectBoardListNew(PageInfo pi){
 		Connection conn=getConnection();
-		ArrayList<Board> list=new BoardDao().selectBoardList(conn, pi);
+		ArrayList<Board> list=new BoardDao().selectBoardListNew(conn, pi);
+		close(conn);
+		return list;
+	}
+	public ArrayList<Board> selectBoardListOld(PageInfo pi){
+		Connection conn=getConnection();
+		ArrayList<Board> list=new BoardDao().selectBoardListOld(conn, pi);
 		close(conn);
 		return list;
 	}

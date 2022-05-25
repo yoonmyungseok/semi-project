@@ -22,6 +22,7 @@
     <!--customCSS-->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header-style.css" >
+    <link rel="shortcut icon" href="#">
     <title>header</title>
 </head>
 <body>

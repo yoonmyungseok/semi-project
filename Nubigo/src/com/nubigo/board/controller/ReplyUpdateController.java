@@ -29,6 +29,7 @@ public class ReplyUpdateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		int boardNo=Integer.parseInt(request.getParameter("bno"));
 		int replyNo=Integer.parseInt(request.getParameter("rno"));
 		String content=request.getParameter("content");
@@ -39,13 +40,18 @@ public class ReplyUpdateController extends HttpServlet {
 		r.setReplyContent(content);
 		
 		int result=new BoardService().updateReply(r);
-
-		response.setContentType("text/html; charset=utf-8");
-		response.getWriter().print(result);
 		
-		System.out.println(boardNo);
-		System.out.println(replyNo);
-		System.out.println(content);
+		if(result>0) {
+			request.getSession().setAttribute("alertMsg", "성공적으로 댓글이 수정되었습니다");
+			response.sendRedirect(request.getContextPath()+"/detail.bo?bno="+boardNo);
+		}else {
+			request.setAttribute("errorMsg", "댓글 수정 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
+		
+		//System.out.println(boardNo);
+		//System.out.println(replyNo);
+		//System.out.println(content);
 	}
 
 	/**

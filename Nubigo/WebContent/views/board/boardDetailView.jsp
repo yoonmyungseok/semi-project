@@ -1,3 +1,4 @@
+<%@page import="oracle.net.aso.r"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.nubigo.board.model.vo.Board, com.nubigo.member.model.vo.Reply, java.util.ArrayList" %>
 <%
@@ -147,18 +148,20 @@
                         <div class="p-2"><%=r.getReplyContent()%></div>
                     </div> 
                 </div> 
-                <div class="d-none commentUpdateShow">
+                <form class="d-none commentUpdateShow" method="post" action="<%=contextPath%>/rupdate.bo">
+                    <input type="hidden" name="bno" value="<%=b.getBoardNo()%>">
+                    <input type="hidden" name="rno" value="<%=r.getReplyNo()%>">
                     <div class="p-2">
                         <div class="d-flex">
                             <label for="commentUpdate" class="font-weight-bold flex-grow-1"><i class="bi bi-arrow-return-right"></i>댓글 수정</label>
                             <small><span class="replyUpdateBtn"><i class="bi bi-x-lg"></i>닫기</span></small>
                         </div>
                         <div class="d-flex">
-                            <textarea class="form-control w-100" id="commentUpdate" rows="3" style="resize: none;" required></textarea>
-                            <button class="btn btn-nubigoSub flex-shrink-0" onclick="boardReplyUpdate();">등록</button>
+                            <textarea class="form-control w-100" id="commentUpdate" rows="3" name="content" style="resize: none;" required></textarea>
+                            <button type="submit" class="btn btn-nubigoSub flex-shrink-0">등록</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
                 <%} %>
             <%} %>
@@ -266,35 +269,6 @@
                 }
             });
         });
-
-        //댓글 수정
-        function boardReplyUpdate(){
-            if($("#commentUpdate").val()==''){
-                alert('안돼');
-            }else{
-            $.ajax({
-                type: "POST",
-                url: "rupdate.bo",
-                traditional: true,
-                data: {
-                    bno: '<%=b.getBoardNo()%>',
-                    rno: $(".reply-board").data("replyNo"),
-                    content: $('#commentUpdate').val()
-                },
-                success: function (result) {
-                    if (result > 0) {
-                        alert('댓글 수정 성공');
-                        location.reload();
-                    } else {
-                        alert('댓글 수정 실패');
-                    }
-                },
-                error: function () {
-                    console.log('댓글 신고 통신 실패');
-                }
-            });
-            }
-        }
 
         //게시글 신고
         function reportBoard(){

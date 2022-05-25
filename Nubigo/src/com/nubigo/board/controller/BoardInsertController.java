@@ -65,11 +65,11 @@ public class BoardInsertController extends HttpServlet {
 				response.sendRedirect(request.getContextPath()+"/list.bo?currentPage=1");
 			}else {
 				//실패=>에러페이지로 포워딩
-				if(b.getAttachmentName()!=null) {
+				//if(b.getAttachmentName()!=null) {
 					//첨부파일이 있었을 경우
 					//삭제시키고자하는 파일 객체 생성=>delete 메소드 (해당 파일을 삭제시켜주는 역할)
-					new File(savePath+b.getAttachmentName()).delete();
-				}
+					//new File(savePath+b.getAttachmentName()).delete();
+				//}
 				request.setAttribute("errorMsg", "게시글 등록 실패");
 				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 			}

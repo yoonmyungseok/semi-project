@@ -50,11 +50,45 @@ public class BoardDao {
 		return count;
 	}
 	
-	public ArrayList<Board> selectBoardList(Connection conn, PageInfo pi){
+	public ArrayList<Board> selectBoardListNew(Connection conn, PageInfo pi){
 		ArrayList<Board> list=new ArrayList<>();
 		PreparedStatement pstmt=null;
 		ResultSet rset=null;
-		String sql=prop.getProperty("selectBoardList");
+		String sql=prop.getProperty("selectBoardListNew");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			int endRow=startRow+pi.getBoardLimit()-1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Board(
+						rset.getInt("BOARD_NO"),
+						rset.getString("BOARD_TITLE"),
+						rset.getDate("BOARD_DATE"),
+						rset.getString("MEMBER_ID"),
+						rset.getInt("COUNT"),
+						rset.getInt("REPLY_COUNT")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<Board> selectBoardListOld(Connection conn, PageInfo pi){
+		ArrayList<Board> list=new ArrayList<>();
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		String sql=prop.getProperty("selectBoardListOld");
 		
 		try {
 			pstmt=conn.prepareStatement(sql);

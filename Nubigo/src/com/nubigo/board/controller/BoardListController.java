@@ -59,17 +59,29 @@ public class BoardListController extends HttpServlet {
 			endPage=maxPage;
 		}
 		PageInfo pi=new PageInfo(listCount,currentPage,pageLimit,boardLimit,maxPage,startPage,endPage);
+		String options=request.getParameter("options");
 		
-		ArrayList<Board> list=new BoardService().selectBoardList(pi);
-
+		ArrayList<Board> list=new BoardService().selectBoardListNew(pi);
+		
+		if(options==null||options.equals("new")) {
+			list=new BoardService().selectBoardListNew(pi);
+		}else {
+			list=new BoardService().selectBoardListOld(pi);
+		}
+		
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
 		
+		//System.out.println(options);
+		//response.setContentType("text/html; charset=utf-8");
+		//response.getWriter().print(options);
 		
 		//응답페이지:
 		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
-
+		
+		
+		
 		
 	}
 

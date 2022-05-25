@@ -2,7 +2,7 @@
 <%@ page import="java.util.ArrayList, com.nubigo.board.model.vo.Board, com.nubigo.common.model.vo.PageInfo" %>
 <%
 	ArrayList<Board> list=(ArrayList<Board>)request.getAttribute("list");
-PageInfo pi=(PageInfo)request.getAttribute("pi");
+    PageInfo pi=(PageInfo)request.getAttribute("pi");
 
 //페이징바 관련 변수
 int currentPage=pi.getCurrentPage();
@@ -17,19 +17,23 @@ int maxPage=pi.getMaxPage();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자유게시판</title>
+    <style>
+    .list-area>tbody>tr{
+    cursor:pointer;
+    }
+    </style>
 </head>
 <body>
     <%@ include file="../common/menubar.jsp" %>
     <div id="wrap">
-        <h2 class="mb-4 p-2">자유게시판</h2>
+        <h2 class="mb-4 p-2"><span onclick="location.href='<%=contextPath%>/list.bo?currentPage=1';" style="cursor: pointer;">자유게시판</span></h2>
         <hr>
-        <div class="btn-group btn-group-toggle mb-2 btn-group-sm" data-toggle="buttons">
-            <label class="btn btn-outline-nubigoMain active" >
-                <input type="radio" name="options" id="option1" value="new" checked> 최신순
-            </label>
-            <label class="btn btn-outline-nubigoMain">
-                <input type="radio" name="options" id="option2" value="old"> 조회순
-            </label>
+        <div class="btn-group btn-group-toggle mb-2 btn-group-sm">
+            <form action="<%=contextPath%>/list.bo" method="get">
+                <button type="submit" class="btn btn-outline-nubigoMain active" name="options" id="option1" value="new" checked> 최신순</button>
+                <button type="submit" class="btn btn-outline-nubigoMain active" name="options" id="option2" value="old"> 조회순</button>
+                <input type="hidden" name="currentPage" value="<%=currentPage%>">
+            </form>
         </div>
         <table class="table table-hover table-sm text-center list-area">
             <thead class="thead-light">
@@ -115,7 +119,7 @@ int maxPage=pi.getMaxPage();
         $(function () {
             $(".list-area>tbody>tr").click(function () {
                 location.href = "<%=contextPath%>/detail.bo?bno=" + $(this).children().eq(0).text();
-            })
+            });
         })
     </script>
 </body>
