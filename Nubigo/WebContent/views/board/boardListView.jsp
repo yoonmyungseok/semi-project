@@ -3,7 +3,9 @@
 <%
 	ArrayList<Board> list=(ArrayList<Board>)request.getAttribute("list");
     PageInfo pi=(PageInfo)request.getAttribute("pi");
-
+    String search=(String)request.getAttribute("search");
+    String keyword=(String)request.getAttribute("keyword");
+    String options=(String)request.getAttribute("options");
 //페이징바 관련 변수
 int currentPage=pi.getCurrentPage();
 int startPage=pi.getStartPage();
@@ -29,11 +31,8 @@ int maxPage=pi.getMaxPage();
         <h2 class="mb-4 p-2"><span onclick="location.href='<%=contextPath%>/list.bo?currentPage=1';" style="cursor: pointer;">자유게시판</span></h2>
         <hr>
         <div class="btn-group btn-group-toggle mb-2 btn-group-sm">
-            <form action="<%=contextPath%>/list.bo" method="get">
-                <button type="submit" class="btn btn-outline-nubigoMain active" name="options" id="option1" value="new" checked> 최신순</button>
-                <button type="submit" class="btn btn-outline-nubigoMain active" name="options" id="option2" value="old"> 조회순</button>
-                <input type="hidden" name="currentPage" value="<%=currentPage%>">
-            </form>
+            <a href="<%=contextPath%>/list.bo?options=new&keyword=&search=&currentPage=1"><div class="btn btn-nubigoMain btn-sm mr-1">최신순</div></a>
+            <a href="<%=contextPath%>/list.bo?options=old&keyword=&search=&currentPage=1"><div class="btn btn-nubigoSub btn-sm">조회순</div></a>
         </div>
         <table class="table table-hover table-sm text-center list-area">
             <thead class="thead-light">
@@ -66,18 +65,18 @@ int maxPage=pi.getMaxPage();
             </tbody>
         </table>
         <div class="d-flex mb-5">
-            <form class="form-inline" method="get" action="<%=contextPath %>/boardSearch.bo">
-                <input type="hidden" name="currentPage" value="1">
+            <form class="form-inline" method="get" action="<%=contextPath %>/list.bo">
+                <input type="hidden" name="currentPage" value="<%=currentPage%>"> 
                 <div class="mr-sm-2">
                     <select class="custom-select" name="keyword">
-                        <option value="제목내용" selected>제목+내용</option>
+                        <option value="제목내용">제목+내용</option>
                         <option value="제목">제목</option>
                         <option value="내용">내용</option>
                         <option value="작성자">작성자</option>
                     </select>
                 </div>
                 <div class="input-group">
-                    <input type="search" class="form-control" placeholder="검색어를 입력해 주세요" name="boardSearch">
+                    <input type="search" class="form-control" placeholder="검색어를 입력해 주세요" name="search" required <%if(search!=null){%> value="<%=search%>" <%}%> >
                     <div class="input-group-append">
                         <button class="btn btn-nubigoMain" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
                     </div>
@@ -92,21 +91,21 @@ int maxPage=pi.getMaxPage();
             <ul class="pagination justify-content-center">
                 <%if(currentPage!=1){ %>
                 <li class="page-item">
-                    <button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage-1%>';">
+                    <button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage-1%>&keyword=&search=&options=<%=options%>';">
                         <span aria-hidden="true">&laquo;</span>
                     </button>
                 </li>
                 <%}%>
                 <%for(int p=startPage;p<=endPage;p++){ %>
                     <% if(p!=currentPage){ %>
-                    <li class="page-item"><button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=p%>';"><%=p %></button></li>
+                    <li class="page-item"><button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=p%>&keyword=&search=&options=<%=options%>';"><%=p %></button></li>
                     <%}else{ %>
                     <li class="page-item active"><button class="page-link"><%=p %></button></li>
                     <%} %>
                 <%} %>
                 <%if(currentPage!=maxPage){ %>
                 <li class="page-item">
-                    <button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage+1%>';">
+                    <button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage+1%>&keyword=&search=&options=<%=options%>';">
                         <span aria-hidden="true">&raquo;</span>
                     </button>
                 </li>
@@ -120,7 +119,15 @@ int maxPage=pi.getMaxPage();
             $(".list-area>tbody>tr").click(function () {
                 location.href = "<%=contextPath%>/detail.bo?bno=" + $(this).children().eq(0).text();
             });
+            
         })
+        if('<%=keyword%>'!=""){
+            for(var i=0; i<4; i++){
+                if ($(".custom-select option").eq(i).val() == '<%=keyword%>') {
+                    $(".custom-select option").eq(i).attr('selected', true);
+                }
+            }   
+        }
     </script>
 </body>
 </html>

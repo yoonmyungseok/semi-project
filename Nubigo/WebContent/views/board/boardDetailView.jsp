@@ -21,12 +21,12 @@
         <div id="board-detail" class="mb-5">
             <div id="board-detail-title" class="d-flex justify-content-between p-2 border-bottom border-top bg-light">
                 <h5 class="mb-0 font-weight-bold"><%=b.getBoardTitle() %></h5>
-                <div><%=b.getBoardDate() %></div>
+                <div><small><%=b.getBoardDate() %></small></div>
             </div>
             <div id="board-detail-header" class="d-flex p-2 border-bottom">
                 <div class="mr-auto"><%=b.getMemberId() %></div>
-                <div class="mr-1">조회수 <b><%=b.getCount()%></b></div>
-                <div>댓글 <b><%=b.getReplyCount() %></b></div>
+                <div class="mr-1"><small>조회수 <b><%=b.getCount()%></b></small></div>
+                <div><small>댓글 <b><%=b.getReplyCount() %></b></small></div>
             </div>
             <div id="board-detail-content" class="p-2">
                 <p>

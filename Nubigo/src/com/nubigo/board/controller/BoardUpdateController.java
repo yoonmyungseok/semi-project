@@ -53,14 +53,21 @@ public class BoardUpdateController extends HttpServlet {
 			b.setBoardTitle(boardTitle);
 			b.setBoardContent(boardContent);
 			
-			if(multiRequest.getFilesystemName("reUpfile")!=null) {
-				if(b.getAttachmentName()!=null) {
-					//첨부파일이 있었을 경우
-					//삭제시키고자하는 파일 객체 생성=>delete 메소드 (해당 파일을 삭제시켜주는 역할)
-					new File(savePath+multiRequest.getParameter("reUpfile")).delete();
-				}
+			String atDelete=multiRequest.getParameter("atDelete");
+			if("atDelete".equals(atDelete)) {
+				new File(savePath+multiRequest.getParameter("originFileName")).delete();
+			}
+			
+			if(multiRequest.getParameter("originFileName")!=null) {
+				//전달된 파일이 있을 때
+				b.setAttachmentPath("resources/board_upfiles/");
 				b.setAttachmentName(multiRequest.getFilesystemName("reUpfile"));
-				b.setAttachmentPath("resources/board_upfiles/");		
+				
+				if(multiRequest.getOriginalFileName("reUpfile")!=null) {
+					//원래 파일이 있었을 때
+					new File(savePath+multiRequest.getParameter("originFileName")).delete();
+					//파일 삭제
+				}
 			}
 			
 			int result=new BoardService().updateBoard(b);

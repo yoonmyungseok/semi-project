@@ -50,74 +50,6 @@ public class BoardDao {
 		return count;
 	}
 	
-	public ArrayList<Board> selectBoardListNew(Connection conn, PageInfo pi){
-		ArrayList<Board> list=new ArrayList<>();
-		PreparedStatement pstmt=null;
-		ResultSet rset=null;
-		String sql=prop.getProperty("selectBoardListNew");
-		
-		try {
-			pstmt=conn.prepareStatement(sql);
-			int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
-			int endRow=startRow+pi.getBoardLimit()-1;
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			rset=pstmt.executeQuery();
-			
-			while(rset.next()) {
-				list.add(new Board(
-						rset.getInt("BOARD_NO"),
-						rset.getString("BOARD_TITLE"),
-						rset.getDate("BOARD_DATE"),
-						rset.getString("MEMBER_ID"),
-						rset.getInt("COUNT"),
-						rset.getInt("REPLY_COUNT")
-						));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return list;
-	}
-	
-	public ArrayList<Board> selectBoardListOld(Connection conn, PageInfo pi){
-		ArrayList<Board> list=new ArrayList<>();
-		PreparedStatement pstmt=null;
-		ResultSet rset=null;
-		String sql=prop.getProperty("selectBoardListOld");
-		
-		try {
-			pstmt=conn.prepareStatement(sql);
-			int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
-			int endRow=startRow+pi.getBoardLimit()-1;
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			rset=pstmt.executeQuery();
-			
-			while(rset.next()) {
-				list.add(new Board(
-						rset.getInt("BOARD_NO"),
-						rset.getString("BOARD_TITLE"),
-						rset.getDate("BOARD_DATE"),
-						rset.getString("MEMBER_ID"),
-						rset.getInt("COUNT"),
-						rset.getInt("REPLY_COUNT")
-						));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return list;
-	}
-	
 	public int increaseCount(Connection conn, int boardNo) {
 		int result=0;
 		PreparedStatement pstmt=null;
@@ -149,7 +81,7 @@ public class BoardDao {
 						rset.getInt("BOARD_NO"),
 						rset.getString("BOARD_TITLE"),
 						rset.getString("BOARD_CONTENT"),
-						rset.getDate("BOARD_DATE"),
+						rset.getString(String.valueOf("BOARD_DATE")),
 						rset.getNString("MEMBER_ID"), 
 						rset.getString("ATTACHMENT_PATH"),
 						rset.getString("ATTACHMENT_NAME"),
@@ -276,17 +208,82 @@ public class BoardDao {
 		}
 		return result;
 	}
+	public ArrayList<Board> selectBoardList(Connection conn,PageInfo pi){
+		ArrayList<Board> list=new ArrayList<>();
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		String sql=prop.getProperty("selectBoardList");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			int endRow=startRow+pi.getBoardLimit()-1;
+
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset=pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new Board(
+						rset.getInt("BOARD_NO"),
+						rset.getString("BOARD_TITLE"),
+						rset.getString(String.valueOf("BOARD_DATE")),
+						rset.getString("MEMBER_ID"),
+						rset.getInt("COUNT"),
+						rset.getInt("REPLY_COUNT")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	public ArrayList<Board> selectBoardListCount(Connection conn,PageInfo pi){
+		ArrayList<Board> list=new ArrayList<>();
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		String sql=prop.getProperty("selectBoardListCount");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			int endRow=startRow+pi.getBoardLimit()-1;
+
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset=pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new Board(
+						rset.getInt("BOARD_NO"),
+						rset.getString("BOARD_TITLE"),
+						rset.getString(String.valueOf("BOARD_DATE")),
+						rset.getString("MEMBER_ID"),
+						rset.getInt("COUNT"),
+						rset.getInt("REPLY_COUNT")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 	
-	public ArrayList<Board> boardSearch(Connection conn, String search, String keyword, PageInfo pi){
+	public ArrayList<Board> selectBoardListNew(Connection conn,PageInfo pi,String search, String keyword){
 		ArrayList<Board> list=new ArrayList<>();
 		PreparedStatement pstmt=null;
 		ResultSet rset=null;
 		String sql="";
 		switch(keyword) {
-			case "제목내용" : sql=prop.getProperty("boardSearchAll"); break;
-			case "제목" : sql=prop.getProperty("boardSearchTitle"); break;
-			case "내용" : sql=prop.getProperty("boardSearchContent"); break;
-			case "작성자" : sql=prop.getProperty("boardSearchId"); break;
+			case "제목내용" : sql=prop.getProperty("boardSearchAllNew"); break;
+			case "제목" : sql=prop.getProperty("boardSearchTitleNew"); break;
+			case "내용" : sql=prop.getProperty("boardSearchContentNew"); break;
+			case "작성자" : sql=prop.getProperty("boardSearchIdNew"); break;
+			default: sql=prop.getProperty("boardSearchAllNew"); break;
 		}
 		
 		try {
@@ -302,7 +299,48 @@ public class BoardDao {
 				list.add(new Board(
 						rset.getInt("BOARD_NO"),
 						rset.getString("BOARD_TITLE"),
-						rset.getDate("BOARD_DATE"),
+						rset.getString(String.valueOf("BOARD_DATE")),
+						rset.getString("MEMBER_ID"),
+						rset.getInt("COUNT"),
+						rset.getInt("REPLY_COUNT")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	public ArrayList<Board> selectBoardListOld(Connection conn,PageInfo pi,String search, String keyword){
+		ArrayList<Board> list=new ArrayList<>();
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		String sql="";
+		switch(keyword) {
+			case "제목내용" : sql=prop.getProperty("boardSearchAllOld"); break;
+			case "제목" : sql=prop.getProperty("boardSearchTitleOld"); break;
+			case "내용" : sql=prop.getProperty("boardSearchContentOld"); break;
+			case "작성자" : sql=prop.getProperty("boardSearchIdOld"); break;
+			default: sql=prop.getProperty("boardSearchAllOld"); break;
+		}
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			int endRow=startRow+pi.getBoardLimit()-1;
+
+			pstmt.setString(1, "%"+search+"%");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset=pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new Board(
+						rset.getInt("BOARD_NO"),
+						rset.getString("BOARD_TITLE"),
+						rset.getString(String.valueOf("BOARD_DATE")),
 						rset.getString("MEMBER_ID"),
 						rset.getInt("COUNT"),
 						rset.getInt("REPLY_COUNT")

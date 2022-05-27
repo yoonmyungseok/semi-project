@@ -1,12 +1,10 @@
 package com.nubigo.board.model.vo;
 
-import java.sql.Date;
-
 public class Board {
 	private int boardNo; //BOARD_NO NUMBER PRIMARY KEY,
     private String boardTitle;//BOARD_TITLE VARCHAR2(90) NOT NULL,
     private String boardContent;//BOARD_CONTENT VARCHAR2(3000) NOT NULL,
-    private Date boardDate;//BOARD_DATE DATE DEFAULT SYSDATE NOT NULL,
+    private String boardDate;//BOARD_DATE DATE DEFAULT SYSDATE NOT NULL,
     private String deleteStatus;//DELETE_STATUS VARCHAR2(1) DEFAULT 'N' CHECK (DELETE_STATUS IN ('Y', 'N')),
     private String attachmentPath;//ATTACHMENT_PATH VARCHAR2(1000),
     private String attachmentName;//ATTACHMENT_NAME VARCHAR2(200),
@@ -18,7 +16,7 @@ public class Board {
 		super();
 	}
 
-	public Board(int boardNo, String boardTitle, String boardContent, Date boardDate, String deleteStatus,
+	public Board(int boardNo, String boardTitle, String boardContent, String boardDate, String deleteStatus,
 			String attachmentPath, String attachmentName, String memberId,int count, int replyCount) {
 		super();
 		this.boardNo = boardNo;
@@ -34,7 +32,7 @@ public class Board {
 	}
 	
 	//게시글 전체 조회용
-	public Board(int boardNo, String boardTitle, Date boardDate, String memberId, int count, int replyCount) {
+	public Board(int boardNo, String boardTitle, String boardDate, String memberId, int count, int replyCount) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -45,7 +43,7 @@ public class Board {
 	}
 
 	//게시글 상세 조회용
-	public Board(int boardNo, String boardTitle, String boardContent, Date boardDate, String memberId, String attachmentPath, String attachmentName, int count, int replyCount) {
+	public Board(int boardNo, String boardTitle, String boardContent, String boardDate, String memberId, String attachmentPath, String attachmentName, int count, int replyCount) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -82,11 +80,11 @@ public class Board {
 		this.boardContent = boardContent;
 	}
 
-	public Date getBoardDate() {
+	public String getBoardDate() {
 		return boardDate;
 	}
 
-	public void setBoardDate(Date boardDate) {
+	public void setBoardDate(String boardDate) {
 		this.boardDate = boardDate;
 	}
 
@@ -113,7 +111,6 @@ public class Board {
 	public void setAttachmentName(String attachmentName) {
 		this.attachmentName = attachmentName;
 	}
-	
 
 	public String getMemberId() {
 		return memberId;
@@ -131,7 +128,6 @@ public class Board {
 		this.count = count;
 	}
 
-	
 	public int getReplyCount() {
 		return replyCount;
 	}
@@ -147,6 +143,8 @@ public class Board {
 				+ ", attachmentName=" + attachmentName + ", memberId=" + memberId + ", count=" + count + ", replyCount="
 				+ replyCount + "]";
 	}
+
+	
 
 
 	

@@ -1,6 +1,5 @@
 package com.nubigo.board.controller;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -52,7 +51,7 @@ public class BoardInsertController extends HttpServlet {
 			b.setBoardTitle(boardTitle);
 			b.setBoardContent(boardContent);
 			
-			if(multiRequest.getFilesystemName("upfile")!=null) {
+			if(multiRequest.getOriginalFileName("upfile")!=null) {
 				b.setAttachmentName(multiRequest.getFilesystemName("upfile"));
 				b.setAttachmentPath("resources/board_upfiles/");
 			}

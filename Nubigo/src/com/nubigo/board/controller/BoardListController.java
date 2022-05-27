@@ -61,18 +61,32 @@ public class BoardListController extends HttpServlet {
 		PageInfo pi=new PageInfo(listCount,currentPage,pageLimit,boardLimit,maxPage,startPage,endPage);
 		String options=request.getParameter("options");
 		
-		ArrayList<Board> list=new BoardService().selectBoardListNew(pi);
+		String search=request.getParameter("search");
+		String keyword=request.getParameter("keyword");
 		
-		if(options==null||options.equals("new")) {
-			list=new BoardService().selectBoardListNew(pi);
-		}else {
-			list=new BoardService().selectBoardListOld(pi);
+		ArrayList<Board> list=new ArrayList<>();
+		
+		
+		if("old".equals(options)) {
+			if(search==null||keyword==null) {
+				//검색안했을 때
+				list=new BoardService().selectBoardListCount(pi);
+			}else {
+				list=new BoardService().selectBoardListOld(pi,search,keyword);
+			}
+		}else{
+			if(search==null||keyword==null) {
+				list=new BoardService().selectBoardList(pi);
+			}else {
+				list=new BoardService().selectBoardListNew(pi,search,keyword);
+			}
 		}
-		
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
-		
+		request.setAttribute("search", search);
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("options", options);
 		//System.out.println(options);
 		//response.setContentType("text/html; charset=utf-8");
 		//response.getWriter().print(options);
@@ -80,9 +94,7 @@ public class BoardListController extends HttpServlet {
 		//응답페이지:
 		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
 		
-		
-		
-		
+		//System.out.println("options:"+options+"search:"+search+"keyword:"+keyword+"list:"+list);
 	}
 
 	/**

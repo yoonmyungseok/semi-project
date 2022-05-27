@@ -14,15 +14,32 @@ import com.nubigo.common.model.vo.PageInfo;
 import com.nubigo.member.model.vo.Reply;
 
 public class BoardService {
-	public ArrayList<Board> selectBoardListNew(PageInfo pi){
+	//최신순
+	public ArrayList<Board> selectBoardList(PageInfo pi){
 		Connection conn=getConnection();
-		ArrayList<Board> list=new BoardDao().selectBoardListNew(conn, pi);
+		ArrayList<Board> list=new BoardDao().selectBoardList(conn,pi);
 		close(conn);
 		return list;
 	}
-	public ArrayList<Board> selectBoardListOld(PageInfo pi){
+	//조회순
+	public ArrayList<Board> selectBoardListCount(PageInfo pi){
 		Connection conn=getConnection();
-		ArrayList<Board> list=new BoardDao().selectBoardListOld(conn, pi);
+		ArrayList<Board> list=new BoardDao().selectBoardListCount(conn,pi);
+		close(conn);
+		return list;
+	}
+	
+	//최신순+검색
+	public ArrayList<Board> selectBoardListNew(PageInfo pi,String search, String keyword){
+		Connection conn=getConnection();
+		ArrayList<Board> list=new BoardDao().selectBoardListNew(conn, pi,search,keyword);
+		close(conn);
+		return list;
+	}
+	//조회순+검색
+	public ArrayList<Board> selectBoardListOld(PageInfo pi,String search, String keyword){
+		Connection conn=getConnection();
+		ArrayList<Board> list=new BoardDao().selectBoardListOld(conn,pi,search,keyword);
 		close(conn);
 		return list;
 	}
@@ -106,13 +123,6 @@ public class BoardService {
 		}
 		close(conn);
 		return result;
-	}
-	
-	public ArrayList<Board> boardSearch(String search, String keyword, PageInfo pi){
-		Connection conn=getConnection();
-		ArrayList<Board> list=new BoardDao().boardSearch(conn, search, keyword, pi);
-		close(conn);
-		return list;
 	}
 	
 	public int deleteReply(Reply r) {

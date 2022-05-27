@@ -35,7 +35,8 @@ Board b=(Board)request.getAttribute("b");
                 <label class="col-2 col-form-label font-weight-bold">첨부파일</label>
                 <div class="input-group col-10">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="BoardFileUpload" name="reUpfile">
+                        <input type="hidden" name="originFileName" value="<%=b.getAttachmentName()%>">
+                        <input type="file" class="custom-file-input" id="BoardFileUpload" name="reUpfile" >
                         <label class="custom-file-label" for="BoardFileUpload" data-browse="파일 첨부">
                         <% if(b.getAttachmentName()==null){ %>
                         파일 용량 제한: 30MB
@@ -46,6 +47,16 @@ Board b=(Board)request.getAttribute("b");
                     </div>
                 </div>
             </div>
+            <% if(b.getAttachmentName()!=null){ %>
+            <div class="form-group row">
+                <div class="col-2"></div>
+                <div class="col-10">
+                    <%=b.getAttachmentName() %>
+                    <a type="button" onclick="atDelete();"><i class="bi bi-x-square-fill"></i></a>
+                    <input type="hidden" name="atDelete" id="atDelete">
+                </div>
+            </div>
+            <%}%>
         <hr>
         <div class="float-right">
             <button class="btn btn-outline-nubigoSub" onclick="history.back();">취소</button>
@@ -59,6 +70,11 @@ Board b=(Board)request.getAttribute("b");
                 $(this).next('.custom-file-label').html(event.target.files[0].name);
             });
         })
+        function atDelete(){
+            $('#atDelete').attr('value','atDelete');
+            $('#atDelete').parent().parent().addClass('d-none');
+            $(".custom-file-label").html("파일 용량 제한: 30MB");
+        }
     </script>
 </body>
 </html>
