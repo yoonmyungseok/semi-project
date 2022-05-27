@@ -36,6 +36,7 @@ public class BoardDetailController extends HttpServlet {
 		
 		int result=new BoardService().increaseCount(boardNo);
 		ArrayList<Reply> reply=new BoardService().selectReplyList(boardNo);
+
 		
 		if(result>0) {
 			Board b=new BoardService().selectBoard(boardNo);

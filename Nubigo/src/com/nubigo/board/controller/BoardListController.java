@@ -92,6 +92,7 @@ public class BoardListController extends HttpServlet {
 		//response.getWriter().print(options);
 		
 		//응답페이지:
+		
 		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
 		
 		//System.out.println("options:"+options+"search:"+search+"keyword:"+keyword+"list:"+list);

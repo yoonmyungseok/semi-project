@@ -4,6 +4,7 @@
 <%
 	Board b=(Board)request.getAttribute("b");
     ArrayList<Reply> reply=(ArrayList<Reply>)request.getAttribute("reply");
+    
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -12,11 +13,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자유게시판</title>
+
 </head>
 <body>
 <%@ include file="../common/menubar.jsp" %>
     <div id="wrap">
-        <h2 class="mb-4 p-2">자유게시판</h2>
+        <h2 class="mb-4 p-2"><span onclick="location.href='<%=contextPath%>/list.bo?currentPage=1';" style="cursor: pointer;">자유게시판</span></h2>
         <hr>
         <div id="board-detail" class="mb-5">
             <div id="board-detail-title" class="d-flex justify-content-between p-2 border-bottom border-top bg-light">
@@ -198,7 +200,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>              
     </div>
     <script>
         
@@ -322,7 +324,6 @@
                 return false;
             }
         }
-        
     </script>
 </body>
 </html>

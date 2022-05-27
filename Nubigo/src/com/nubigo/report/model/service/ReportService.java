@@ -12,15 +12,14 @@ import com.nubigo.report.model.vo.Report;
 public class ReportService {
 	public int boardReport(Report r) {
 		Connection conn=getConnection();
-		int result1=new ReportDao().boardReport(conn, r);
-		int result2=new ReportDao().boardReportContent(conn, r);
-		if(result1>0&&result2>0) {
+		int result=new ReportDao().boardReport(conn, r);
+		if(result>0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
 		close(conn);
-		return result1*result2;
+		return result;
 	}
 	
 	public int boardReplyReport(Report r) {

@@ -29,6 +29,7 @@ public class ReportDao {
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, r.getBoardNo());
+			pstmt.setString(2, r.getReportContent());
 			result=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -37,22 +38,7 @@ public class ReportDao {
 		}
 		return result;
 	}
-	public int boardReportContent(Connection conn, Report r) {
-		int result=0;
-		PreparedStatement pstmt=null;
-		String sql=prop.getProperty("boardReportContent");
-		
-		try {
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, r.getReportType());
-			result=pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		return result;
-	}
+
 	
 	public int boardReplyReport(Connection conn, Report r) {
 		int result=0;

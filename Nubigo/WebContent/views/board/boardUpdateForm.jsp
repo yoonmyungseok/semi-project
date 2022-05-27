@@ -14,7 +14,7 @@ Board b=(Board)request.getAttribute("b");
 <body>
 <%@ include file="../common/menubar.jsp" %>
     <div id="wrap">
-        <h2 class="mb-4 p-2">자유게시판</h2>
+        <h2 class="mb-4 p-2"><span onclick="location.href='<%=contextPath%>/list.bo?currentPage=1';" style="cursor: pointer;">자유게시판</span></h2>
         <hr>
         <form action="<%=contextPath %>/update.bo" method="post" id="update-form" enctype="multipart/form-data">
             <input type="hidden" name="bno" value="<%=b.getBoardNo() %>">
@@ -59,7 +59,7 @@ Board b=(Board)request.getAttribute("b");
             <%}%>
         <hr>
         <div class="float-right">
-            <button class="btn btn-outline-nubigoSub" onclick="history.back();">취소</button>
+            <a class="btn btn-outline-nubigoSub" href="javascript:history.back();">취소</a>
             <button class="btn btn-nubigoMain" type="submit">작성완료</button>
         </div>
         </form>

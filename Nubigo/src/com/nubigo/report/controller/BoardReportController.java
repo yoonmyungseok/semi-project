@@ -35,11 +35,14 @@ public class BoardReportController extends HttpServlet {
 		
 		Report r=new Report();
 		r.setBoardNo(bno);
-		r.setReportType(report);
+		r.setReportContent(report);
 		
 		int result=new ReportService().boardReport(r);
 		response.setContentType("text/html; charset=utf-8");
 		response.getWriter().print(result);
+		System.out.println(result);
+		System.out.println(bno);
+		System.out.println(report);
 	}
 
 	/**

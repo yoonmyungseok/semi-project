@@ -6,11 +6,11 @@
     String search=(String)request.getAttribute("search");
     String keyword=(String)request.getAttribute("keyword");
     String options=(String)request.getAttribute("options");
-//페이징바 관련 변수
-int currentPage=pi.getCurrentPage();
-int startPage=pi.getStartPage();
-int endPage=pi.getEndPage();
-int maxPage=pi.getMaxPage();
+    //페이징바 관련 변수
+    int currentPage=pi.getCurrentPage();
+    int startPage=pi.getStartPage();
+    int endPage=pi.getEndPage();
+    int maxPage=pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -117,7 +117,7 @@ int maxPage=pi.getMaxPage();
     <script>
         $(function () {
             $(".list-area>tbody>tr").click(function () {
-                location.href = "<%=contextPath%>/detail.bo?bno=" + $(this).children().eq(0).text();
+                location.href = "<%=contextPath%>/detail.bo?bno="+ $(this).children().eq(0).text()+"&currentPage=1";
             });
             
         })
