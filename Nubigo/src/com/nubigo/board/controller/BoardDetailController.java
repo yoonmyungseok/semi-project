@@ -36,10 +36,15 @@ public class BoardDetailController extends HttpServlet {
 		
 		int result=new BoardService().increaseCount(boardNo);
 		ArrayList<Reply> reply=new BoardService().selectReplyList(boardNo);
+		int prev=new BoardService().boardPrev(boardNo);//이전글 번호
+		int next=new BoardService().boardNext(boardNo);//다음글 번호
 
-		
+		//System.out.println(prev);
+		//System.out.println(next);
 		if(result>0) {
 			Board b=new BoardService().selectBoard(boardNo);
+			request.setAttribute("prev", prev);
+			request.setAttribute("next", next);
 			request.setAttribute("b", b);
 			request.setAttribute("reply", reply);
 			request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);

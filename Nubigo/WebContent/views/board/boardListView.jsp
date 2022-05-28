@@ -31,8 +31,21 @@
         <h2 class="mb-4 p-2"><span onclick="location.href='<%=contextPath%>/list.bo?currentPage=1';" style="cursor: pointer;">자유게시판</span></h2>
         <hr>
         <div class="btn-group btn-group-toggle mb-2 btn-group-sm">
-            <a href="<%=contextPath%>/list.bo?options=new&keyword=&search=&currentPage=1"><div class="btn btn-nubigoMain btn-sm mr-1">최신순</div></a>
-            <a href="<%=contextPath%>/list.bo?options=old&keyword=&search=&currentPage=1"><div class="btn btn-nubigoSub btn-sm">조회순</div></a>
+            <%if(keyword==null&&search==null){%>
+                <a href="<%=contextPath%>/list.bo?options=new&keyword=&search=&currentPage=1">
+                    <div class="btn btn-nubigoMain btn-sm mr-1">최신순</div>
+                </a>
+                <a href="<%=contextPath%>/list.bo?options=old&keyword=&search=&currentPage=1">
+                    <div class="btn btn-nubigoSub btn-sm">조회순</div>
+                </a>
+            <%}else{%>
+                <a href="<%=contextPath%>/list.bo?options=new&keyword=<%=keyword%>&search=<%=search%>&currentPage=1">
+                    <div class="btn btn-nubigoMain btn-sm mr-1">최신순</div>
+                </a>
+                <a href="<%=contextPath%>/list.bo?options=old&keyword=<%=keyword%>&search=<%=search%>&currentPage=1">
+                    <div class="btn btn-nubigoSub btn-sm">조회순</div>
+                </a>
+            <%}%>
         </div>
         <table class="table table-hover table-sm text-center list-area">
             <thead class="thead-light">
@@ -117,7 +130,7 @@
     <script>
         $(function () {
             $(".list-area>tbody>tr").click(function () {
-                location.href = "<%=contextPath%>/detail.bo?bno="+ $(this).children().eq(0).text()+"&currentPage=1";
+                location.href = "<%=contextPath%>/detail.bo?bno="+ $(this).children().eq(0).text()+"&currentPage=<%=currentPage%>";
             });
             
         })

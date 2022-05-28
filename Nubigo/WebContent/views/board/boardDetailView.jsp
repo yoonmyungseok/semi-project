@@ -4,7 +4,8 @@
 <%
 	Board b=(Board)request.getAttribute("b");
     ArrayList<Reply> reply=(ArrayList<Reply>)request.getAttribute("reply");
-    
+    int prev=(int)request.getAttribute("prev");
+    int next=(int)request.getAttribute("next");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -73,9 +74,12 @@
                                 <label class="custom-control-label" for="boardRadio4">기타</label>
                             </div>
                         </div>
+                        <div class="modal-body d-none" id="boardReportContent">
+                            <textarea name="boardReportContent"cols="30" rows="3" style="resize: none;"></textarea>
+                        </div>
                         <div class="modal-footer">        
+                            <button type="button" class="btn btn-nubigoMain" data-dismiss="modal">취소</button>
                             <button type="button" class="btn btn-nubigoSub" onclick="reportBoard();">신고</button>
-                            <button type="button" class="btn btn-nubigoMain" data-dismiss="modal" >취소</button>
                         </div>
                     </div>
                 </div>
@@ -95,9 +99,17 @@
                 
         </div>
         <div class="d-flex justify-content-between mb-3 p-2">
-            <a class="btn btn-outline-nubigoMain btn-sm"><i class="bi bi-chevron-left"></i>이전 글</a>
+            <% if(prev!=0){ %>
+            <a class="btn btn-outline-nubigoMain btn-sm" href="<%=contextPath%>/detail.bo?bno=<%=prev%>" id="boardPrev"><i class="bi bi-chevron-left"></i>이전 글</a>
+            <%}else{%>
+            <a class="btn btn-outline-nubigoMain btn-sm" id="boardPrev"><i class="bi bi-chevron-left"></i>이전 글</a>
+            <%}%>
             <a class="btn btn-nubigoMain btn-sm" href="<%=contextPath%>/list.bo?currentPage=1">목록으로</a>
-            <a class="btn btn-outline-nubigoMain btn-sm">다음 글<i class="bi bi-chevron-right"></i></a>
+            <% if(next!=0){%>
+            <a class="btn btn-outline-nubigoMain btn-sm" href="<%=contextPath%>/detail.bo?bno=<%=next%>" id="boardNext">다음 글<i class="bi bi-chevron-right"></i></a>
+            <%}else{%>
+            <a class="btn btn-outline-nubigoMain btn-sm" id="boardNext">다음 글<i class="bi bi-chevron-right"></i></a>
+            <%}%>
         </div>
         <div class="board-comments mb-5">
             <form class="border rounded-lg p-3 mb-4" action="<%=contextPath%>/rinsert.bo" method="post">
@@ -194,9 +206,12 @@
                                 <label class="custom-control-label" for="commentRadio4">기타</label>
                             </div>
                         </div>
+                        <div class="modal-body d-none" id="boardReplyReportContent">
+                            <textarea name="boardReplyReportContent" cols="30" rows="3" style="resize: none;"></textarea>
+                        </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-nubigoSub" id="commentReportBtn">신고</button>
                             <button type="button" class="btn btn-nubigoMain" data-dismiss="modal">취소</button>
+                            <button type="button" class="btn btn-nubigoSub" id="commentReportBtn">신고</button>
                         </div>
                     </div>
                 </div>
@@ -218,14 +233,18 @@
                     alert('항목을 선택해주세요.');
                     return false;
                 } else {
-                    $.ajax({
+                    if($("#commentRadio4:checked").val() && $("textarea[name=boardReplyReportContent]").val() == ""){
+                        alert('신고 사유를 작성해주세요');
+                    }else{
+                        $.ajax({
                         type: "POST",
                         url: "rreport.bo",
                         traditional: true,
                         data: {
                             bno: '<%=b.getBoardNo()%>',
                             rno: $(".replyReportBtn").data("replyNo"),
-                            report: $('input[name=commentReportRadio]:checked').val()
+                            report: $('input[name=commentReportRadio]:checked').val(),
+                            content: $("textarea[name=boardReplyReportContent]").val()
                         },
                         success: function (result) {
                             if (result > 0) {
@@ -238,7 +257,8 @@
                         error: function () {
                             console.log('댓글 신고 통신 실패');
                         }
-                    });
+                        });
+                    }
                 }
             });
             
@@ -278,24 +298,30 @@
                 alert('항목을 선택해주세요.');
                 return false;
             }else{
-                $.ajax({
-                    url:"report.bo",
-                    data:{
-                        bno:'<%=b.getBoardNo()%>',
-                        report:$('input[name=boardReport]:checked').val()
-                    },
-                    success:function(result) {
-                        if(result>0){
-                            alert("게시글 신고 성공");
-                            location.href="<%=contextPath%>/list.bo?currentPage=1";
-                        }else{
-                            alert("게시글 신고 실패");
+                if($("#boardRadio4:checked").val() && $("textarea[name=boardReportContent]").val() == ""){
+                    alert('신고 사유를 작성해주세요');
+                }else{
+                    $.ajax({
+                        url: "report.bo",
+                        data: {
+                            bno: '<%=b.getBoardNo()%>',
+                            report: $('input[name=boardReport]:checked').val(),
+                            content: $("textarea[name=boardReportContent]").val()
+                        },
+                        success: function (result) {
+                            if (result > 0) {
+                                alert("게시글 신고 성공");
+                                location.href = "<%=contextPath%>/list.bo?currentPage=1";
+                            } else {
+                                alert("게시글 신고 실패");
+                            }
+                        },
+                        error: function () {
+                            console.log("게시글 신고 ajax 통신 실패");
                         }
-                    },
-                    error:function(){
-                        console.log("게시글 신고 ajax 통신 실패");
-                    }
-                })
+                    })
+                }
+                
             }
         }
         
@@ -324,6 +350,35 @@
                 return false;
             }
         }
+
+        //신고 기타 작성 창
+        $("input[name='boardReport']").click(function(){
+            if($(this).val()==$("#boardRadio4").val()){
+                $("#boardReportContent").removeClass("d-none");
+            }else{
+                $("#boardReportContent").addClass("d-none");
+            }
+        })
+        //댓글 신고 기타 작성 창
+        $("input[name='commentReportRadio']").click(function () {
+                if ($(this).val() == $("#commentRadio4").val()) {
+                    $("#boardReplyReportContent").removeClass("d-none");
+                } else {
+                    $("#boardReplyReportContent").addClass("d-none");
+                }
+        })
+        //이전글 클릭
+        $("#boardPrev").click(function(){
+            if('<%=prev%>'==0){
+                alert('첫 번째 게시글입니다.');
+            }
+        })
+        //다음글 클릭
+        $("#boardNext").click(function () {
+            if ('<%=next%>' == 0) {
+                alert('마지막 게시글입니다.');
+            }
+        })
     </script>
 </body>
 </html>

@@ -229,7 +229,8 @@ public class BoardDao {
 						rset.getString(String.valueOf("BOARD_DATE")),
 						rset.getString("MEMBER_ID"),
 						rset.getInt("COUNT"),
-						rset.getInt("REPLY_COUNT")
+						rset.getInt("REPLY_COUNT"),
+						rset.getInt("RNUM")
 						));
 			}
 		} catch (SQLException e) {
@@ -261,7 +262,8 @@ public class BoardDao {
 						rset.getString(String.valueOf("BOARD_DATE")),
 						rset.getString("MEMBER_ID"),
 						rset.getInt("COUNT"),
-						rset.getInt("REPLY_COUNT")
+						rset.getInt("REPLY_COUNT"),
+						rset.getInt("RNUM")
 						));
 			}
 		} catch (SQLException e) {
@@ -302,7 +304,8 @@ public class BoardDao {
 						rset.getString(String.valueOf("BOARD_DATE")),
 						rset.getString("MEMBER_ID"),
 						rset.getInt("COUNT"),
-						rset.getInt("REPLY_COUNT")
+						rset.getInt("REPLY_COUNT"),
+						rset.getInt("RNUM")
 						));
 			}
 		} catch (SQLException e) {
@@ -343,7 +346,8 @@ public class BoardDao {
 						rset.getString(String.valueOf("BOARD_DATE")),
 						rset.getString("MEMBER_ID"),
 						rset.getInt("COUNT"),
-						rset.getInt("REPLY_COUNT")
+						rset.getInt("REPLY_COUNT"),
+						rset.getInt("RNUM")
 						));
 			}
 		} catch (SQLException e) {
@@ -387,6 +391,52 @@ public class BoardDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	//이전글
+	public int boardPrev(Connection conn, int boardNo) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		String sql=prop.getProperty("boardPrev");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rset=pstmt.executeQuery();
+			if(rset.next()) {
+				result=rset.getInt("PREV");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
+	//다음글
+	public int boardNext(Connection conn, int boardNo) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		String sql=prop.getProperty("boardNext");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rset=pstmt.executeQuery();
+			if(rset.next()) {
+				result=rset.getInt("NEXT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
 			close(pstmt);
 		}
 		return result;

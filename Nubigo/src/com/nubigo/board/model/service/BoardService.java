@@ -148,4 +148,19 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+	
+	//이전글
+	public int boardPrev(int boardNo) {
+		Connection conn=getConnection();
+		int result=new BoardDao().boardPrev(conn, boardNo);
+		close(conn);
+		return result;
+	}
+	//다음글
+	public int boardNext(int boardNo) {
+		Connection conn=getConnection();
+		int result=new BoardDao().boardNext(conn, boardNo);
+		close(conn);
+		return result;
+	}
 }

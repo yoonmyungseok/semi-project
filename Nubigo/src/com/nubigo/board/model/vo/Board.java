@@ -11,13 +11,14 @@ public class Board {
     private String memberId;
     private int count;
     private int replyCount;
+    private int rNum;
     
 	public Board() {
 		super();
 	}
 
 	public Board(int boardNo, String boardTitle, String boardContent, String boardDate, String deleteStatus,
-			String attachmentPath, String attachmentName, String memberId,int count, int replyCount) {
+			String attachmentPath, String attachmentName, String memberId,int count, int replyCount, int rNum) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -29,10 +30,11 @@ public class Board {
 		this.memberId=memberId;
 		this.count=count;
 		this.replyCount=replyCount;
+		this.rNum=rNum;
 	}
 	
 	//게시글 전체 조회용
-	public Board(int boardNo, String boardTitle, String boardDate, String memberId, int count, int replyCount) {
+	public Board(int boardNo, String boardTitle, String boardDate, String memberId, int count, int replyCount, int rNum) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -40,6 +42,7 @@ public class Board {
 		this.memberId = memberId;
 		this.count=count;
 		this.replyCount=replyCount;
+		this.rNum=rNum;
 	}
 
 	//게시글 상세 조회용
@@ -136,17 +139,20 @@ public class Board {
 		this.replyCount = replyCount;
 	}
 
+	public int getrNum() {
+		return rNum;
+	}
+
+	public void setrNum(int rNum) {
+		this.rNum = rNum;
+	}
+
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
 				+ ", boardDate=" + boardDate + ", deleteStatus=" + deleteStatus + ", attachmentPath=" + attachmentPath
 				+ ", attachmentName=" + attachmentName + ", memberId=" + memberId + ", count=" + count + ", replyCount="
-				+ replyCount + "]";
+				+ replyCount + ", rNum=" + rNum + "]\n";
 	}
-
-	
-
-
-	
 
 }

@@ -32,12 +32,17 @@ public class BoardReplyReportController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int boardNo=Integer.parseInt(request.getParameter("bno"));
 		int replyNo=Integer.parseInt(request.getParameter("rno"));
+		String content=request.getParameter("content");
 		String report=request.getParameter("report");
 		
 		Report r=new Report();
 		r.setBoardNo(boardNo);
 		r.setReplyNo(replyNo);
-		r.setReportContent(report);
+		if(report.equals("기타")) {
+			r.setReportContent(content);
+		}else {
+			r.setReportContent(report);
+		}
 		
 		int result=new ReportService().boardReplyReport(r);
 
