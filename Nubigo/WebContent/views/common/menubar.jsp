@@ -88,7 +88,7 @@
 	            <a href="">나만의 여행리스트</a>
 	        </li>
 	        <li class="menu">
-	            <a href="<%=contextPath%>/list.bo?currentPage=1">자유게시판</a>
+	            <a href="<%=contextPath%>/list.bo?options=new&keyword=&search=&currentPage=1">자유게시판</a>
 	        </li>
 	    </div>
 </body>

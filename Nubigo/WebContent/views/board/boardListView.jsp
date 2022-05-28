@@ -28,7 +28,7 @@
 <body>
     <%@ include file="../common/menubar.jsp" %>
     <div id="wrap">
-        <h2 class="mb-4 p-2"><span onclick="location.href='<%=contextPath%>/list.bo?currentPage=1';" style="cursor: pointer;">자유게시판</span></h2>
+        <h2 class="mb-4 p-2"><span onclick="location.href='<%=contextPath%>/list.bo?options=new&keyword=&search=&currentPage=1';" style="cursor: pointer;">자유게시판</span></h2>
         <hr>
         <div class="btn-group btn-group-toggle mb-2 btn-group-sm">
             <%if(keyword==null&&search==null){%>
@@ -69,7 +69,7 @@
                         <tr>
                             <td><%=b.getBoardNo()%></td>
                             <!--<td><%=b.getrNum()%></td>-->
-                            <td><%=b.getBoardTitle() %> <%if(b.getReplyCount()==0){ %><%}else{ %><small><b>[<%=b.getReplyCount() %>]</b></small><%} %></td>
+                            <td><%=b.getBoardTitle() %><%if(b.getReplyCount()==0){ %><%}else{ %><small><b>[<%=b.getReplyCount() %>]</b></small><%} %></td>
                             <td><%=b.getMemberId() %></td>
                             <td><%=b.getBoardDate() %></td>
                             <td><%=b.getCount() %></td>
@@ -105,21 +105,21 @@
             <ul class="pagination justify-content-center">
                 <%if(currentPage!=1){ %>
                 <li class="page-item">
-                    <button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage-1%>&keyword=&search=&options=<%=options%>';">
+                    <button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage-1%>&keyword=<%=keyword%>&search=<%=search%>&options=<%=options%>';">
                         <span aria-hidden="true">&laquo;</span>
                     </button>
                 </li>
                 <%}%>
                 <%for(int p=startPage;p<=endPage;p++){ %>
                     <% if(p!=currentPage){ %>
-                    <li class="page-item"><button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=p%>&keyword=&search=&options=<%=options%>';"><%=p %></button></li>
+                    <li class="page-item"><button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=p%>&keyword=<%=keyword%>&search=<%=search%>&options=<%=options%>';"><%=p %></button></li>
                     <%}else{ %>
                     <li class="page-item active"><button class="page-link"><%=p %></button></li>
                     <%} %>
                 <%} %>
                 <%if(currentPage!=maxPage){ %>
                 <li class="page-item">
-                    <button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage+1%>&keyword=&search=&options=<%=options%>';">
+                    <button class="page-link" onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=currentPage+1%>&keyword=<%=keyword%>&search=<%=search%>&options=<%=options%>';">
                         <span aria-hidden="true">&raquo;</span>
                     </button>
                 </li>
