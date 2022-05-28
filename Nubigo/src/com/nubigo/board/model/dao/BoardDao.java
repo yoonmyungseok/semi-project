@@ -216,9 +216,11 @@ public class BoardDao {
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
-			int endRow=startRow+pi.getBoardLimit()-1;
-
+			//int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			//int endRow=startRow+pi.getBoardLimit()-1;
+			int endRow=pi.getListCount()-(pi.getCurrentPage()-1)*pi.getBoardLimit();
+			int startRow=(endRow>pi.getBoardLimit())? endRow-pi.getBoardLimit()+1: endRow;
+					
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
 			rset=pstmt.executeQuery();
@@ -249,8 +251,10 @@ public class BoardDao {
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
-			int endRow=startRow+pi.getBoardLimit()-1;
+			//int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			//int endRow=startRow+pi.getBoardLimit()-1;
+			int endRow=pi.getListCount()-(pi.getCurrentPage()-1)*pi.getBoardLimit();
+			int startRow=(endRow>pi.getBoardLimit())? endRow-pi.getBoardLimit()+1: endRow;
 
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
@@ -290,8 +294,10 @@ public class BoardDao {
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
-			int endRow=startRow+pi.getBoardLimit()-1;
+			//int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			//int endRow=startRow+pi.getBoardLimit()-1;
+			int endRow=pi.getListCount()-(pi.getCurrentPage()-1)*pi.getBoardLimit();
+			int startRow=(endRow>pi.getBoardLimit())? endRow-pi.getBoardLimit()+1: endRow;
 
 			pstmt.setString(1, "%"+search+"%");
 			pstmt.setInt(2, startRow);
@@ -332,8 +338,10 @@ public class BoardDao {
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
-			int endRow=startRow+pi.getBoardLimit()-1;
+			//int startRow=(pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			//int endRow=startRow+pi.getBoardLimit()-1;
+			int endRow=pi.getListCount()-(pi.getCurrentPage()-1)*pi.getBoardLimit();
+			int startRow=(endRow>pi.getBoardLimit())? endRow-pi.getBoardLimit()+1: endRow;
 
 			pstmt.setString(1, "%"+search+"%");
 			pstmt.setInt(2, startRow);

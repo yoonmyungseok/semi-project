@@ -50,7 +50,7 @@
         <table class="table table-hover table-sm text-center list-area">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col" style="width:10%;">번호</th>
+                    <th scope="col" style="width:10%;">글번호</th>
                     <th scope="col" style="width:55%;">제목</th>
                     <th scope="col" style="width:15%;">작성자</th>
                     <th scope="col" style="width:15%;">작성일</th>
@@ -68,6 +68,7 @@
                 <%for(Board b:list){%>
                         <tr>
                             <td><%=b.getBoardNo()%></td>
+                            <!--<td><%=b.getrNum()%></td>-->
                             <td><%=b.getBoardTitle() %> <%if(b.getReplyCount()==0){ %><%}else{ %><small><b>[<%=b.getReplyCount() %>]</b></small><%} %></td>
                             <td><%=b.getMemberId() %></td>
                             <td><%=b.getBoardDate() %></td>
