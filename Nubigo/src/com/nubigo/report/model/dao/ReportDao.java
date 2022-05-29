@@ -58,4 +58,22 @@ public class ReportDao {
 		}
 		return result;
 	}
+	
+	public int reviewReport(Connection conn, Report r) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		String sql=prop.getProperty("reviewReport");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, r.getReviewNo());
+			pstmt.setString(2, r.getReportContent());
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

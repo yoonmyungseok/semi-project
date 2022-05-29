@@ -1,0 +1,2190 @@
+
+/* main-imageslide */
+/* 메인페이지 > 메인 이미지 슬라이드/슬라이더 */
+.main-imageslide-wrap {
+    margin: auto;
+    width: 1200px;
+}
+
+.main-imageslide {
+    height: 470px;
+    overflow : hidden;
+    margin : 0 auto;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+ .carousel-control-prev-icon {
+     transform : translate(-40px, -160px)
+ }
+
+ .carousel-control-next-icon {
+    transform : translate(40px, -160px)
+}
+
+  #main-imageslide-text {
+    font-family: Arial;
+    text-shadow: 1px 1px 8px rgb(113, 102, 169);
+    font-weight: 600;
+    font-size : 55px;
+    color: white;
+    position: absolute;
+    z-index: 1;
+    top: 125px;
+    left: 120px;
+}
+
+#main-imageslide-text2 {
+  text-shadow: 1px 1px 8px rgb(34, 14, 137);
+  font-weight: 400;
+  font-size : 19px;
+  color: white;
+  position: absolute;
+  z-index: 1;
+  top: 200px;
+  left: 125px;
+}
+
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 0px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    position: absolute;
+    z-index: 1;
+    top : 245px;
+    left: 120px;
+    width: 720px;
+    height: 48px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 1px 1px 8px rgb(113, 102, 169);
+  }
+
+  form.example input:hover {
+    outline: 1px solid #FFCA29;
+  }
+  
+  form.example button {
+    float: left;
+    width: 20%;
+    background: #FFCA29;
+    color: white;
+    font-size: 17px;
+    border: 0px solid grey;
+    border-left: none;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    width: 135px;
+    height: 40px;
+    top : 249px;
+    left: 700px;
+    border-radius: 5px;
+  }
+  
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+
+
+
+/* main-imagelist-1 */
+/* 메인페이지 > 인기 여행지 영역 */
+:root{--swiper-theme-color:#007aff}
+
+#main-listimage1-best-text {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1200px;
+    font-size: 30px;
+    font-family: 'IBM Plex Sans KR';
+    font-weight: 600;
+    margin-top: 70px;
+}
+
+.main-listimage1-wrap {
+    margin: auto;
+    width: 1300px;
+    height: 260px;
+    }
+
+    .swiper {
+    width: 92%;
+    height: 100%;
+    }
+
+    .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: rgb(24, 24, 24);
+    border-radius: 10px;
+    transform: translate(0px, 0px);
+    transition: all 0.2s;
+    }
+
+    .swiper-slide:hover {
+    transform: translate(0px, -5px);
+    transition: all 0.2s;
+    box-shadow: 1px 1px 10px rgb(226, 226, 226);
+    }
+
+    .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+    }
+
+.swiper{
+    margin-left:auto;
+    margin-right:auto;
+    position:relative;
+    overflow:hidden;
+    list-style:none;
+    padding:0;
+    z-index:1;
+    
+}
+
+
+
+.main-slider-text {
+    position: absolute;
+    color : white;
+    bottom: 30px;
+    left: 25px;
+    font-size: 23px;
+    font-weight: 300;
+    font-family: 'IBM Plex Sans KR';
+}
+
+.swiper-vertical>.swiper-wrapper{
+    flex-direction:column
+    
+}
+
+.swiper-wrapper{
+    position:relative;
+    width:100%;
+    height:100%;
+    z-index:1;
+    display:flex;
+    transition-property:transform;
+    box-sizing:content-box;
+    
+}
+
+.swiper-android .swiper-slide,.swiper-wrapper{
+    transform:translate3d(0px,0,0)
+    
+}
+
+.swiper-pointer-events{
+    touch-action:pan-y
+    
+}
+
+.swiper-pointer-events.swiper-vertical{
+    touch-action:pan-x
+}
+
+.swiper-slide{
+    flex-shrink:0;
+    width:100%;
+    height:100%;
+    position:relative;
+    
+}
+
+.swiper-slide-invisible-blank{
+    visibility:hidden;
+}
+
+.swiper-autoheight,.swiper-autoheight .swiper-slide{
+    height:auto;
+    
+}
+
+.swiper-autoheight .swiper-wrapper{
+    align-items:flex-start;
+    transition-property:transform,height;
+    
+}
+
+.swiper-backface-hidden .swiper-slide{
+    transform:translateZ(0);
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+    
+}
+
+.swiper-3d,.swiper-3d.swiper-css-mode .swiper-wrapper{
+    perspective:1200px;
+    
+}
+
+/* 좌/우 버튼 속성 */
+.slide_btn_box > button {position:absolute; top: 90px; width: 30px; height: 60px; border-style:none ; cursor: pointer;}
+.slide_btn_box > .slide_btn_prev { left: 0px; }
+.slide_btn_box > .slide_btn_next { right: 0px; }
+
+.swiper-3d .swiper-cube-shadow,.swiper-3d .swiper-slide,.swiper-3d 
+.swiper-slide-shadow,.swiper-3d .swiper-slide-shadow-bottom,.swiper-3d 
+.swiper-slide-shadow-left,.swiper-3d .swiper-slide-shadow-right,.swiper-3d 
+.swiper-slide-shadow-top,.swiper-3d .swiper-wrapper{
+    transform-style:preserve-3d
+}
+
+.swiper-3d .swiper-slide-shadow,.swiper-3d .swiper-slide-shadow-bottom,.swiper-3d 
+.swiper-slide-shadow-left,.swiper-3d .swiper-slide-shadow-right,.swiper-3d .swiper-slide-shadow-top{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:10;
+    
+}
+
+.swiper-3d .swiper-slide-shadow{
+    background:rgba(0,0,0,.15);
+    
+}
+
+.swiper-3d .swiper-slide-shadow-left{background-image:linear-gradient(to left,rgba(0,0,0,.5),rgba(0,0,0,0))}
+.swiper-3d .swiper-slide-shadow-right{background-image:linear-gradient(to right,rgba(0,0,0,.5),rgba(0,0,0,0))}
+.swiper-3d .swiper-slide-shadow-top{background-image:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,0))}
+.swiper-3d .swiper-slide-shadow-bottom{background-image:linear-gradient(to bottom,rgba(0,0,0,.5),rgba(0,0,0,0))}
+.swiper-css-mode>.swiper-wrapper{
+    overflow:auto;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+    
+}
+
+.swiper-css-mode>.swiper-wrapper::-webkit-scrollbar{
+    display:none;
+}
+
+.swiper-css-mode>.swiper-wrapper>.swiper-slide{
+    scroll-snap-align:start start;
+}
+
+.swiper-horizontal.swiper-css-mode>.swiper-wrapper{
+    scroll-snap-type:x mandatory;
+}
+
+.swiper-vertical.swiper-css-mode>.swiper-wrapper{
+    scroll-snap-type:y mandatory;
+}
+
+.swiper-centered>.swiper-wrapper::before{
+    content:'';
+    flex-shrink:0;
+    order:9999;
+}
+
+.swiper-centered.swiper-horizontal>.swiper-wrapper>.swiper-slide:first-child{
+    margin-inline-start:var(--swiper-centered-offset-before);
+}
+
+.swiper-centered.swiper-horizontal>.swiper-wrapper::before{
+    height:100%;
+    min-height:1px;
+    width:var(--swiper-centered-offset-after);
+}
+
+.swiper-centered.swiper-vertical>.swiper-wrapper>.swiper-slide:first-child{
+    margin-block-start:var(--swiper-centered-offset-before);
+}
+
+.swiper-centered.swiper-vertical>.swiper-wrapper::before{
+    width:100%;
+    min-width:1px;
+    height:var(--swiper-centered-offset-after);
+}
+
+.swiper-centered>.swiper-wrapper>.swiper-slide{
+    scroll-snap-align:center center;
+}
+
+.swiper-virtual .swiper-slide{
+    -webkit-backface-visibility:hidden;
+    transform:translateZ(0);
+}
+
+.swiper-virtual.swiper-css-mode .swiper-wrapper::after{
+    content:'';
+    position:absolute;
+    left:0;top:0;pointer-events:none;
+}
+
+.swiper-virtual.swiper-css-mode.swiper-horizontal .swiper-wrapper::after{
+    height:1px;
+    width:var(--swiper-virtual-size);
+}
+
+.swiper-virtual.swiper-css-mode.swiper-vertical .swiper-wrapper::after{
+    width:1px;
+    height:var(--swiper-virtual-size);
+}
+
+:root{--swiper-navigation-size:44px}
+
+.swiper-button-next,.swiper-button-prev{
+    top:50%;
+    width:calc(var(--swiper-navigation-size)/ 44 * 27);
+    height:var(--swiper-navigation-size);
+    margin-top:calc(0px - (var(--swiper-navigation-size)/ 2));
+    display:flex;
+    z-index:10;
+    cursor:pointer;
+    align-items:center;
+    justify-content:center;
+    
+}
+
+.swiper-button-next.swiper-button-disabled,.swiper-button-prev.swiper-button-disabled{
+    opacity:.35;
+    cursor:auto;
+    pointer-events:none;
+    
+}
+
+.swiper-button-next:after,.swiper-button-prev:after{
+    font-family:swiper-icons;
+    font-size:var(--swiper-navigation-size);
+    text-transform:none!important;
+    letter-spacing:0;
+    font-variant:initial;
+    line-height:1;
+    
+}
+
+.swiper-button-prev,.swiper-rtl .swiper-button-next{left:10px;right:auto}
+.swiper-button-prev:after,.swiper-rtl .swiper-button-next:after{content:'prev'}
+.swiper-button-next,.swiper-rtl .swiper-button-prev{right:10px;left:auto}
+.swiper-button-next:after,.swiper-rtl .swiper-button-prev:after{content:'next'}
+.swiper-button-lock{display:none}
+
+.swiper-scrollbar{border-radius:10px;position:relative;-ms-touch-action:none;background:rgba(0,0,0,.1)}
+.swiper-horizontal>.swiper-scrollbar{position:absolute;left:1%;bottom:3px;z-index:50;height:5px;width:98%}
+.swiper-vertical>.swiper-scrollbar{position:absolute;right:3px;top:1%;z-index:50;width:5px;height:98%}
+.swiper-scrollbar-drag{height:100%;width:100%;position:relative;background:rgba(0,0,0,.5);border-radius:10px;left:0;top:0}
+.swiper-scrollbar-cursor-drag{cursor:move}
+.swiper-scrollbar-lock{display:none}
+.swiper-zoom-container{width:100%;height:100%;display:flex;justify-content:center;align-items:center;text-align:center}
+.swiper-zoom-container>canvas,.swiper-zoom-container>img,.swiper-zoom-container>svg{max-width:100%;max-height:100%;object-fit:contain}
+.swiper-slide-zoomed{cursor:move}
+.swiper-lazy-preloader{
+    width:42px;
+    height:42px;
+    position:absolute;
+    left:50%;top:50%;
+    margin-left:-21px;
+    margin-top:-21px;
+    z-index:10;
+    transform-origin:50%;
+    box-sizing:border-box;
+    border:4px solid var(--swiper-preloader-color,var(--swiper-theme-color));border-radius:50%;
+    border-top-color:transparent
+}
+
+.swiper-watch-progress .swiper-slide-visible .swiper-lazy-preloader,.swiper:not(.swiper-watch-progress) 
+.swiper-lazy-preloader{animation:swiper-preloader-spin 1s infinite linear}.swiper-lazy-preloader-white{--swiper-preloader-color:#fff}
+.swiper-lazy-preloader-black{--swiper-preloader-color:#000}@keyframes swiper-preloader-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.swiper .swiper-notification{
+    position:absolute;
+    left:0;
+    top:0;
+    pointer-events:none;
+    opacity:0;
+    z-index:-1000;
+}
+
+.swiper-free-mode>.swiper-wrapper{
+    transition-timing-function:ease-out;
+    margin:0 auto;
+}
+
+.swiper-grid>.swiper-wrapper{flex-wrap:wrap}
+.swiper-grid-column>.swiper-wrapper{flex-wrap:wrap;flex-direction:column}
+.swiper-fade.swiper-free-mode .swiper-slide{transition-timing-function:ease-out}
+.swiper-fade .swiper-slide{pointer-events:none;transition-property:opacity}
+.swiper-fade .swiper-slide .swiper-slide{pointer-events:none}
+.swiper-fade .swiper-slide-active,.swiper-fade .swiper-slide-active 
+.swiper-slide-active{pointer-events:auto}.swiper-cube{overflow:visible}
+.swiper-cube .swiper-slide{
+    pointer-events:none;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+    z-index:1;
+    visibility:hidden;
+    transform-origin:0 0;
+    width:100%;height:100%
+}
+.swiper-cube .swiper-slide .swiper-slide{pointer-events:none}
+.swiper-cube.swiper-rtl .swiper-slide{transform-origin:100% 0}
+.swiper-cube .swiper-slide-active,.swiper-cube .swiper-slide-active 
+.swiper-slide-active{pointer-events:auto}.swiper-cube .swiper-slide-active,
+.swiper-cube .swiper-slide-next,.swiper-cube .swiper-slide-next+.swiper-slide,
+.swiper-cube .swiper-slide-prev{pointer-events:auto;visibility:visible}
+.swiper-cube .swiper-slide-shadow-bottom,.swiper-cube .swiper-slide-shadow-left,
+.swiper-cube .swiper-slide-shadow-right,.swiper-cube .swiper-slide-shadow-top{
+    z-index:0;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden}
+    .swiper-cube .swiper-cube-shadow{
+        position:absolute;
+        left:0;
+        bottom:0px;
+        width:100%;
+        height:100%;
+        opacity:.6;
+        z-index:0
+}
+.swiper-cube .swiper-cube-shadow:before{
+    content:'';background:#000;
+    position:absolute;left:0;
+    top:0;bottom:0;
+    right:0;
+    filter:blur(50px)}
+
+.swiper-flip{overflow:visible}
+
+.swiper-flip .swiper-slide{pointer-events:none;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;z-index:1}
+
+.swiper-flip .swiper-slide .swiper-slide{pointer-events:none}
+.swiper-flip .swiper-slide-active,.swiper-flip .swiper-slide-active .swiper-slide-active{pointer-events:auto}
+.swiper-flip .swiper-slide-shadow-bottom,.swiper-flip .swiper-slide-shadow-left,.swiper-flip 
+.swiper-slide-shadow-right,.swiper-flip .swiper-slide-shadow-top{
+    z-index:0;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden
+}
+
+.swiper-creative .swiper-slide{-webkit-backface-visibility:hidden;backface-visibility:hidden;
+    overflow:hidden;transition-property:transform,opacity,height}.swiper-cards{overflow:visible}
+    
+.swiper-cards .swiper-slide{transform-origin:center bottom;-webkit-backface-visibility:hidden;
+    backface-visibility:hidden;overflow:hidden}
+
+
+/* main-imagelist-2 */
+/* 메인페이지 > 베스트 여행기 영역 */
+#main-listimage2-text {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1200px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 80px;
+}
+
+.main-imagelist2-warp {
+    width: 1200px;
+    height: 270px;
+    margin: auto;
+    margin-bottom: 100px;
+}
+
+.main-imagelist2-list {
+    width: 379px;
+    height: 269px;
+    float: left;
+    background-color: black;
+    border-radius: 7px;
+    position: relative;
+    transform: translate(0px, 0px);
+    transition: all 0.2s;
+}
+
+.main-imagelist2-list > img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+.main-imagelist2-list:hover {
+    transform: translate(0px, -5px);
+    transition: all 0.2s;
+    box-shadow: 1px 1px 10px rgb(226, 226, 226);
+}
+
+#main-imagelist2-list1{
+    margin-right: 30px;
+}
+
+#main-imagelist2-list3{
+    margin-left: 30px;
+}
+
+.main-imagelist2-listtext {
+    position: absolute;
+    color:white;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    bottom: 15px;
+    left: 30px;
+    width: 300px;
+}
+
+
+
+/* login */
+/* 로그인 페이지 영역 */
+.login-wrap {
+    margin: auto;
+    width: 1200px;
+    height: 750px;
+    overflow : hidden;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+}
+
+.login-form-background {
+    background-color: white;
+    width: 400px;
+    height: 500px;
+    z-index: 1;
+    position: absolute;
+    top: 95px;
+    right: 200px;
+}
+
+#login-form-login {
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    position: absolute;
+    top : 15%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+form {
+    margin-top: 80px;
+    position: absolute;
+    top : 15%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+#login-id-input, #login-pwd-input {
+    width: 270px;
+    height: 32px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    outline: 0px;
+}
+
+#login-id-input:hover, #login-pwd-input:hover {
+    border-color: #FFCA29;;
+}
+
+#login-idcheckbox-idsave {
+    font-size: 13px;
+}
+
+.login-id-pwd-search{
+    margin-top: 1px;
+    text-decoration: none;
+    font-size: 13px;
+    float: right;
+    color: black;
+}
+
+.login-id-pwd-search:hover{
+    color: #00b8ff;
+}
+
+#login-loginbutton, #login-signupbutton {
+    width: 270px;
+    height: 38px;
+    margin-bottom: 11px;
+}
+
+#login-loginbutton {
+    background-color: #00b8ff;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+#login-signupbutton {
+    background-color: #FFCA29;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
+/* signUp */
+/* 회원가입 페이지 영역 */
+.signUp-wrap {
+    margin: auto;
+    width: 1200px;
+    height: 900px;
+    overflow : hidden;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+}
+
+.signUp-form-background {
+    background-color: white;
+    width: 400px;
+    height: 720px;
+    z-index: 1;
+    position: absolute;
+    top: 95px;
+    right: 200px;
+}
+
+#signUp-form-signUp {
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    position: absolute;
+    top : 13%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.signUp-form {
+    margin-top: 80px;
+    position: absolute;
+    top : 13%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.signUp-form-label {
+    font-size: 13px;
+}
+
+#signUp-id-input, #signUp-pwd1-input,
+#signUp-pwd2-input, #signUp-email-input {
+    width: 270px;
+    height: 32px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    outline: 0px;
+}
+
+#signUp-id-input:hover, #signUp-pwd1-input:hover,
+#signUp-pwd2-input:hover, #signUp-email-input:hover {
+    border-color: #FFCA29;;
+}
+
+#signUp-cancelbutton, #signUp-signupbutton {
+    width: 130px;
+    height: 38px;
+    border: 0px;
+    border-radius: 5px;
+    margin-top: 12px;
+}
+
+#signUp-cancelbutton {
+    background-color: lightgray;
+    color: white;
+    float: left;
+    cursor: pointer;
+}
+
+#signUp-signupbutton {
+    background-color: #00b8ff;
+    color: white;
+    float: right;
+    cursor: pointer;
+}
+
+#signUp-logintext,#signUp-loginbutton {
+    z-index: 1;
+    position: absolute;
+}
+
+#signUp-logintext {
+    bottom: 130px;
+    left: 120px;
+    font-size: 13px;
+}
+
+#signUp-loginbutton {
+    bottom: 75px;
+    left: 145px;
+    width: 110px;
+    height: 38px;
+    background-color: white;
+    border: 1px solid #FFCA29;
+    color: #FFCA29;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#signUp-loginbutton:hover {
+    background-color: #FFCA29;
+    color: white;
+}
+
+
+
+/* id-search */
+/* 아이디 찾기/ID 찾기 영역 */
+.id-search-wrap {
+    margin: auto;
+    width: 1200px;
+    height: 700px;
+    background-color: rgb(239, 239, 239);
+}
+
+.id-search-form-background {
+    background-color: white;
+    width: 400px;
+    height: 450px;
+    top : 15%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+#id-search-form-signUp {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    position: absolute;
+    display: block;
+    width: 120px;
+    top : 70px;
+    left: 70px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #00b8ff;
+    cursor: pointer;
+}
+
+#pwd-search-form-signUp {
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    position: absolute;
+    display: block;
+    width: 120px;
+    top : 70px;
+    left: 210px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid rgb(207, 207, 207);
+    cursor: pointer;
+    color: rgb(176, 168, 168);
+}
+
+.id-search-form {
+    margin-top: 80px;
+    position: absolute;
+    top : 15%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+#id-search-p {
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+
+#id-search-label {
+    font-size: 13px;
+}
+
+#id-search-email-input {
+    width: 270px;
+    height: 32px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    outline: 0px;
+}
+
+#id-search-email-input:hover {
+    border-color: #FFCA29;
+    outline: 0;
+}
+
+#id-search-button {
+    background-color: #FFCA29;
+    color: white;
+    width: 270px;
+    height: 38px;
+    border: 0px;
+    border-radius: 5px;
+}
+
+
+
+/* pwd-search */
+/* 비밀번호/패스워드/pwd 찾기 영역 */
+.pwd-search-wrap {
+    margin: auto;
+    width: 1200px;
+    height: 700px;
+    background-color: rgb(239, 239, 239);
+}
+
+.pwd-search-form-background {
+    background-color: white;
+    width: 400px;
+    height: 450px;
+    top : 15%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+#id-search-form-signUp {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(176, 168, 168);
+    text-align: center;
+    position: absolute;
+    display: block;
+    width: 120px;
+    top : 70px;
+    left: 70px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgb(207, 207, 207);
+    cursor: pointer;
+}
+
+#pwd-search-form-signUp {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    position: absolute;
+    display: block;
+    width: 120px;
+    top : 70px;
+    left: 210px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #00b8ff;
+    cursor: pointer;
+}
+
+.pwd-search-form {
+    margin-top: 80px;
+    position: absolute;
+    top : 15%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+#pwd-search-p {
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+
+
+#pwd-search-label {
+    font-size: 13px;
+}
+
+#pwd-search-email-input {
+    width: 270px;
+    height: 32px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    outline: 0px;
+}
+
+#pwd-search-email-input:hover {
+    border-color: #FFCA29;
+    outline: 0;
+}
+
+#pwd-search-button {
+    background-color: #FFCA29;
+    color: white;
+    width: 270px;
+    height: 38px;
+    border: 0px;
+    border-radius: 5px;
+}
+
+/* travel-detailpage */
+/* 여행지 둘러보기 상세페이지 */
+
+/* 여행지 둘러보기 > 메인이미지 wrap */
+.travel-detailpage-imagewrap {
+    margin: auto;
+    width : 1200px;
+    height: 320px;
+    overflow : hidden;
+    position: relative;
+    background-color: black;
+    border-radius: 7px;
+}
+
+/* 여행지 둘러보기 > 메인이미지 속성 */
+.travel-detailpage-imagewrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.7) 0%);
+  }
+
+/* 여행지 둘러보기 > 메인이미지 텍스트 공통 스타일 속성 */
+.travel-detailpage-image1 {
+    position: absolute;
+    left: 60px;
+    color: white;
+}
+
+/* 여행지 둘러보기 > 메인이미지 텍스트 속성 (지역명) */
+#travel-detailpage-image1-text1{
+    top:-10px;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+/* 여행지 둘러보기 > 메인이미지 텍스트 속성 (인기 관광지 & 맛집 ~) */
+#travel-detailpage-image1-text2{
+    top:80px;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+/* 가볼만한곳 텍스트 속성 */
+.travel-detailpage-text {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1200px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 80px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 전체 wrap */
+.travelPage-list-wrap-wrap {
+    margin: auto;
+    width: 1200px;
+    height: 670px;
+    margin-bottom: 70px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 첫째줄 wrap */
+.travelPage-list1-wrap {
+    width: 1200px;
+    height: 300px;
+    position: relative;
+    margin-bottom: 70px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 첫째줄 속성 */
+.travelPage-list1 {
+    float: left;
+    width: 240px;
+    height: 300px;
+    overflow: hidden;
+    background-color: black;
+    border-radius: 7px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 첫째줄 이미지 속성 */
+.travelPage-list1>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 첫째줄 이미지 사이 여백 속성 */
+#travelPage-list1-list1,
+#travelPage-list1-list2,
+#travelPage-list1-list3 {
+    margin-right: 80px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 둘째줄 wrap */
+.travelPage-list2 {
+    float: left;
+    width: 260px;
+    height: 300px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 둘째줄 속성 */
+.travelPage-list2 {
+    float: left;
+    width: 240px;
+    height: 300px;
+    overflow: hidden;
+    background-color: black;
+    border-radius: 7px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 둘째줄 이미지 속성 */
+.travelPage-list2>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 둘째줄 이미지 사이 여백 속성 */
+#travelPage-list2-list1,
+#travelPage-list2-list2,
+#travelPage-list2-list3 {
+    margin-right: 80px;
+}
+
+.travelPage-list1,
+.travelPage-list2 {
+    transform: translate(0px, 0px);
+    transition: all 0.2s;
+}
+
+.travelPage-list1:hover,
+.travelPage-list2:hover {
+    transform: translate(0px, -5px);
+    transition: all 0.2s;
+    box-shadow: 1px 1px 10px rgb(226, 226, 226);
+}
+
+.travelPage-moreview-button1{
+    margin: auto;
+    width: 1200px;
+    height: 46px;
+}
+
+#travelPage-moreview-button1 {
+    margin: auto;
+    width: 300px;
+    height: 45px;
+    color: white;
+    border: 1px solid #FFCA29;
+    background-color: #FFCA29;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+    line-height : 43px;
+    cursor: pointer;
+}
+
+
+/* 여행지 둘러보기 > 인기 맛집 */
+#travelPage-restaurantlist-text {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1200px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 80px;
+}
+
+.travelPage-restaurantlist-wrap {
+    width: 1200px;
+    height: 270px;
+    margin: auto;
+    padding-bottom: 70px;
+}
+
+.travelPage-restaurantlist-list {
+    width: 379px;
+    height: 269px;
+    float: left;
+    background-color: black;
+    border-radius: 7px;
+    position: relative;
+
+}
+
+.travelPage-restaurantlist-list > img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+#travelPage-restaurantlist-list-list1{
+    margin-right: 30px;
+}
+
+#travelPage-restaurantlist-list-list3{
+    margin-left: 30px;
+}
+
+.travelPage-restaurantlist-listtext {
+    position: absolute;
+    color:white;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    bottom: 15px;
+    left: 30px;
+    width: 300px;
+}
+
+.travelPage-moreview-button2{
+    margin: auto;
+    width: 1200px;
+    height: 46px;
+}
+
+#travelPage-moreview-button2 {
+    margin: auto;
+    width: 300px;
+    height: 45px;
+    color: white;
+    border: 1px solid #FFCA29;
+    background-color: #FFCA29;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+    line-height : 43px;
+    cursor: pointer;
+}
+
+
+/* 여행지 둘러보기 > 베스트 여행기 */
+#main-listimage2-text {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1200px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 80px;
+}
+
+.main-imagelist2-warp {
+    width: 1200px;
+    height: 270px;
+    margin: auto;
+    padding-bottom: 70px;
+}
+
+.main-imagelist2-list {
+    width: 379px;
+    height: 269px;
+    float: left;
+    background-color: black;
+    border-radius: 7px;
+    position: relative;
+
+}
+
+.main-imagelist2-list > img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+#main-imagelist2-list1{
+    margin-right: 30px;
+}
+
+#main-imagelist2-list3{
+    margin-left: 30px;
+}
+
+.main-imagelist2-listtext {
+    position: absolute;
+    color:white;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    bottom: 15px;
+    left: 30px;
+    width: 300px;
+}
+
+.travelPage-moreview-button3{
+    margin: auto;
+    width: 1200px;
+    height: 46px;
+}
+
+#travelPage-moreview-button3 {
+    margin: auto;
+    width: 300px;
+    height: 45px;
+    color: white;
+    border: 1px solid #FFCA29;
+    background-color: #FFCA29;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+    line-height : 43px;
+    cursor: pointer;
+}
+
+
+/* restaurant-detailPage */
+/* 맛집 상세페이지 */
+
+/* 이미지 슬라이더 속성 */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.restaurant-detailpage-imagewrap{
+    margin: auto;
+    width : 1200px;
+    height: 320px;
+    overflow : hidden;
+    background-color: black;
+    border-radius: 7px;
+    margin-bottom: 50px;
+}
+
+.swiper-slide>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.9)0%);
+  }
+
+  /* 관광지 콘텐트 wrap */
+  .restaurant-detailpage-content-wrap {
+      width: 1200px;
+      height: 300px;
+      margin: auto;
+      position: relative;
+  }
+
+  /* 관광지 텍스트 wrap */
+  .restaurant-detailpage-text {
+      width: 730px;
+      height: 300px;
+  }
+
+  /* 관광지명 텍스트 (강릉 안반데기 마을) 속성 */
+  #restaurant-detailpage-maintext {
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: 8px;
+  }
+
+  /* 별점 텍스트 속성 */
+  #restaurant-detailpage-subtext1 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFCA29;
+    margin-right: 10px;
+}
+
+/* 리뷰 텍스트 속성 */
+#restaurant-detailpage-subtext2{
+    font-size: 13px;
+    font-weight: 400;
+    color: black;
+}
+
+/* 관광지 본문 텍스트 속성 */
+#restaurant-detailpage-subtext3{
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+/* 지도 wrap */
+.restaurant-detailpage-map-wrap {
+    width: 400px;
+    height: 250px;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+}
+
+/* 내 여행리스트에 담기 속성 */
+#restaurant-detailpage-map-plus {
+    width: 202px;
+    height:39;
+    position: absolute;
+    top: 0;
+    right: 203px;
+}
+
+/* 주변맛집 영역 */
+#restaurant-detailpage-text {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1200px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 70px;
+}
+
+.restaurant-detailpage-warp {
+    width: 1200px;
+    height: 270px;
+    margin: auto;
+    margin-bottom: 140px;
+}
+
+.restaurant-detailpage-list {
+    width: 379px;
+    height: 269px;
+    float: left;
+    background-color: black;
+    border-radius: 7px;
+    position: relative;
+    transform: translate(0px, 0px);
+    transition: all 0.2s;
+}
+
+.restaurant-detailpage-list:hover {
+transform: translate(0px, -5px);
+transition: all 0.2s;
+box-shadow: 1px 1px 10px rgb(226, 226, 226);
+}
+
+.restaurant-detailpage-list > img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+#restaurant-detailpage-list1{
+    margin-right: 30px;
+}
+
+#restaurant-detailpage-list3{
+    margin-left: 30px;
+}
+
+.restaurant-detailpage-listtext {
+    position: absolute;
+    color:white;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    bottom: 15px;
+    left: 30px;
+    width: 300px;
+}
+
+#restaurant-detailpage-review-wrap-wrap{
+    width: 1200px;
+    height: 100px;
+    margin: auto;
+}
+
+#restaurant-detailpage-review-wrap{
+    width: 1200px;
+    height: 50px;
+    margin-top: 15px;
+}
+
+#restaurant-detailpage-review-text1 {
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+#restaurant-detailpage-review-text2 {
+    font-size: 30px;
+    font-weight: 600;
+    float: left;
+    margin-right: 20px;
+}
+
+#restaurant-detailpage-review-star{
+    font-size: 25px;
+    color: #FFCA29;
+    float: left;
+    margin-right: 20px;
+}
+
+#restaurant-detailpage-review-text3 {
+    font-size: 15px;
+    font-weight: 400;
+    padding-top: 10px;
+    color: gray;
+}
+
+#restaurant-detailpage-review-hr {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 1px 0px 0px 0px;
+    width: 1200px;
+}
+
+#restaurant-detailpage-map-plus-images1 {
+    width: 30px;
+    margin-right: 15px;
+}
+
+#restaurant-detailpage-map-plus-images2 {
+    width: 30px;
+    margin-right: 15px;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+
+#restaurant-detailpage-map-plus:hover {
+    cursor: pointer;
+}
+
+#restaurant-detailpage-map-plus:hover #restaurant-detailpage-map-plus-images2 {
+    display: inline;
+}
+
+#restaurant-detailpage-map-plus:hover #restaurant-detailpage-map-plus-images1 {
+    display: none;
+}
+
+#restaurant-detailpage-map-plus-text {
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    top: 5px;
+    cursor: pointer;
+}
+
+
+
+/* region-detailPage */
+/* 관광지 상세페이지 */
+
+/* 이미지 슬라이더 속성 */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.region-detailpage-imagewrap{
+    margin: auto;
+    width : 1200px;
+    height: 320px;
+    overflow : hidden;
+    background-color: black;
+    border-radius: 7px;
+    margin-bottom: 50px;
+}
+
+.swiper-slide>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.9)0%);
+  }
+
+  /* 관광지 콘텐트 wrap */
+  .travel-detailpage-content-wrap {
+      width: 1200px;
+      height: 300px;
+      margin: auto;
+      position: relative;
+  }
+
+  /* 관광지 텍스트 wrap */
+  .travel-detailpage-text {
+      width: 730px;
+      height: 300px;
+  }
+
+  /* 관광지명 텍스트 (강릉 안반데기 마을) 속성 */
+  #travel-detailpage-maintext {
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: 8px;
+  }
+
+  /* 별점 텍스트 속성 */
+  #travel-detailpage-subtext1 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFCA29;
+    margin-right: 10px;
+}
+
+/* 리뷰 텍스트 속성 */
+#travel-detailpage-subtext2{
+    font-size: 13px;
+    font-weight: 400;
+    color: black;
+}
+
+/* 관광지 본문 텍스트 속성 */
+#travel-detailpage-subtext3{
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+/* 지도 wrap */
+.travel-detailpage-map-wrap {
+    width: 400px;
+    height: 250px;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+}
+
+/* 내 여행리스트에 담기 속성 */
+#travel-detailpage-map-plus {
+    width: 202px;
+    height:39;
+    position: absolute;
+    top: 0;
+    right: 203px;
+}
+
+/* 주변맛집 영역 */
+#travel-detailpage-text {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1200px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 70px;
+}
+
+.travel-detailpage-warp {
+    width: 1200px;
+    height: 270px;
+    margin: auto;
+    margin-bottom: 140px;
+}
+
+.travel-detailpage-list {
+    width: 379px;
+    height: 269px;
+    float: left;
+    background-color: black;
+    border-radius: 7px;
+    position: relative;
+    transform: translate(0px, 0px);
+    transition: all 0.2s;
+}
+
+.travel-detailpage-list:hover {
+transform: translate(0px, -5px);
+transition: all 0.2s;
+box-shadow: 1px 1px 10px rgb(226, 226, 226);
+}
+
+.travel-detailpage-list > img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+#travel-detailpage-list1{
+    margin-right: 30px;
+}
+
+#travel-detailpage-list3{
+    margin-left: 30px;
+}
+
+.travel-detailpage-listtext {
+    position: absolute;
+    color:white;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    bottom: 15px;
+    left: 30px;
+    width: 300px;
+}
+
+#travel-detailpage-review-wrap-wrap{
+    width: 1200px;
+    height: 100px;
+    margin: auto;
+}
+
+#travel-detailpage-review-wrap{
+    width: 1200px;
+    height: 50px;
+    margin-top: 15px;
+}
+
+#travel-detailpage-review-text1 {
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+#travel-detailpage-review-text2 {
+    font-size: 30px;
+    font-weight: 600;
+    float: left;
+    margin-right: 20px;
+}
+
+#travel-detailpage-review-star{
+    font-size: 25px;
+    color: #FFCA29;
+    float: left;
+    margin-right: 20px;
+}
+
+#travel-detailpage-review-text3 {
+    font-size: 15px;
+    font-weight: 400;
+    padding-top: 10px;
+    color: gray;
+}
+
+#travel-detailpage-review-hr {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 1px 0px 0px 0px;
+    width: 1200px;
+}
+
+#travel-detailpage-map-plus-images1 {
+    width: 30px;
+    margin-right: 15px;
+}
+
+#travel-detailpage-map-plus-images2 {
+    width: 30px;
+    margin-right: 15px;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+
+#travel-detailpage-map-plus:hover {
+    cursor: pointer;
+}
+
+#travel-detailpage-map-plus:hover #travel-detailpage-map-plus-images2 {
+    display: inline;
+}
+
+#travel-detailpage-map-plus:hover #travel-detailpage-map-plus-images1 {
+    display: none;
+}
+
+#travel-detailpage-map-plus-text {
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    top: 5px;
+    cursor: pointer;
+}
+
+
+/* footer-nubigo+guide */
+/* 푸터 > 누비고 소개 (서비스소개+누비고 이용법) */
+.nubigo-guide-outer{
+    width : 1200px;
+    height : 1100px;
+    margin : auto;
+    margin-top : 50px;
+    margin-bottom : 50px;
+    box-sizing : border-box;
+}
+
+.nubigo-guide-body {
+    width : 1000px;
+    height : 100%;
+    margin : 0px 100px;
+    box-sizing : border-box;
+}
+
+.nubigo-guide-body>div {
+    float : left;
+    box-sizing : border-box;
+    height : 100%;
+}
+
+.menu-body {
+    width : 160px;
+    padding-top : 10px;
+}
+
+.content-body {
+    width : 838px;
+}
+
+.menu-body>div {
+    height : 45px;
+}
+
+.nubigo-intro {
+    width : 100%;
+    height : 45px;
+    line-height : 45px;
+    font-size : 16px;
+    color : white;
+    background-color : #00b8ff;
+    border-radius : 8px;
+    font-weight: 600;
+}
+
+a.menus {
+    display : block;
+    width : 85%;
+    height : 50px;
+    line-height : 50px;
+    color : black;
+    text-decoration : none;
+    font-size : 16px;
+}
+
+.nubigo-intro>a {
+    font-size : 16px;
+    color : white;
+    text-decoration : none;
+}
+
+#menu1 {
+    border-bottom : 2px solid rgb(136, 136, 136);
+}
+
+#menu2 {
+
+    line-height : 65px;
+}
+
+.content-body {
+    padding-left : 20px;
+    padding-right : 20px;
+    padding-top : 5px;
+}
+
+#nubigo-title {
+    font-size : 35px;
+    margin : 0px;
+    padding : 0px;
+    text-align :left;
+    font-weight : bold;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#nubigo-text,
+#guide-text {
+    font-size: 15px;
+    line-height: 25px;
+}
+
+#guide-title {
+    font-size : 35px;
+    margin : 0px;
+    padding : 0px;
+    text-align :left;
+    font-weight : bold;
+    margin-bottom: 20px;
+}
+
+.content-body>div {
+    width : 100%;
+    box-sizing : border-box;
+}
+
+#nubigo-banner {
+    margin-top: 8px;
+    width: 780px;
+    margin-left: 8px;
+}
+
+#nubigo-guide-hr {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 1px 0px 0px 0px;
+}
+
+
+/* footer-terms */
+/* 푸터 > 이용약관 */
+.nubigo-terms-outer{
+    width : 1200px;
+    height : 2900px;
+    margin : auto;
+    margin-top : 50px;
+    margin-bottom : 50px;
+    box-sizing : border-box;
+}
+
+.nubigo-terms-body {
+    width : 1000px;
+    height : 100%;
+    margin : 0px 100px;
+    box-sizing : border-box;
+}
+
+.nubigo-terms-body>div {
+    float : left;
+    box-sizing : border-box;
+    height : 100%;
+}
+
+.terms-menu-body {
+    width : 160px;
+
+}
+
+.terms-content-body {
+    width : 838px;
+}
+
+.terms-menu-body>div {
+    height : 45px;
+}
+
+a.terms-menus {
+    display : block;
+    width : 85%;
+    height : 50px;
+    line-height : 50px;
+    color : black;
+    text-decoration : none;
+    font-size : 16px;
+}
+
+.terms-menu>a {
+    text-decoration : none;
+    display : block;
+    width : 85%;
+    height : 50px;
+    line-height : 55px;
+    color : black;
+    text-decoration : none;
+    font-size : 16px;
+}
+
+#terms-menu1 {
+    width : 100%;
+    height : 45px;
+    line-height : 45px;
+    font-size : 16px;
+    color : white;
+    background-color : #00b8ff;
+    border-radius : 8px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+#terms-menu2 {
+    line-height : 65px;
+}
+
+.terms-content-body {
+    padding-left : 20px;
+    padding-right : 20px;
+    padding-top : 5px;
+}
+
+#nubigo-terms-title {
+    font-size : 35px;
+    margin : 0px;
+    padding : 0px;
+    text-align :left;
+    font-weight : bold;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+#nubigo-terms-text{
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.terms-content-body>div {
+    width : 100%;
+    box-sizing : border-box;
+}
+
+
+/* footer-sitemap */
+/* 푸터 > 사이트맵 */
+.nubigo-sitemap-outer{
+    width : 1200px;
+    height : 1000px;
+    margin : auto;
+    margin-top : 50px;
+    margin-bottom : 50px;
+    box-sizing : border-box;
+}
+
+.nubigo-sitemap-body {
+    width : 1000px;
+    height : 100%;
+    margin : 0px 100px;
+    box-sizing : border-box;
+    
+}
+
+.nubigo-sitemap-body>div {
+    float : left;
+    box-sizing : border-box;
+    height : 100%;
+}
+
+.sitemap-menu-body {
+    width : 160px;
+
+}
+
+.sitemap-content-body {
+    width : 838px;
+    padding-left : 20px;
+    padding-right : 20px;
+    padding-top : 5px;
+}
+
+.sitemap-menu-body>div {
+    height : 45px;
+}
+
+a.sitemap-menus {
+    display : block;
+    width : 85%;
+    height : 50px;
+    line-height : 65px;
+    color: black;
+    text-decoration : none;
+    font-size : 16px;
+}
+
+.sitemap-menu>a {
+    color: black;
+    text-decoration : none;
+    display : block;
+    width : 85%;
+    height : 50px;
+    line-height : 55px;
+    text-decoration : none;
+    font-size : 16px;
+    border-bottom : 2px solid rgb(136, 136, 136);
+}
+
+#sitemap-menu2 {
+    width : 100%;
+    height : 45px;
+    line-height : 45px;
+    font-size : 16px;
+    color : white;
+    background-color : #00b8ff;
+    border-radius : 8px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+#nubigo-sitemap-title {
+    font-size : 35px;
+    margin : 0px;
+    padding : 0px;
+    text-align :left;
+    font-weight : bold;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+#nubigo-sitemap-text{
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.sitemap-content-body>div {
+    box-sizing : border-box;
+    
+}
+
+/* 사이트맵 > 지역 리스트 */
+.sitemap-regionlist {
+    width: 300px;
+    height: 80px;
+    float: left;
+    margin-bottom: 40px;
+    margin-left: 20px;
+    font-size: 13px;
+}
+
+.sitemap-a {
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+}
+
+.sitemap-a:hover,
+#sitemap-menus:hover,
+#sitemap-menu1:hover {
+    color: #00b8ff;
+}
+
+.sitemap-list {
+    width: 300px;
+    height: 110px;
+    float: left;
+    margin-bottom: 45px;
+    margin-left: 20px;
+    font-size: 13px;
+}
+
+#sitemap-hr {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 1px 0px 0px 0px;
+    margin-bottom: 50px;
+}
+
+.sitemap-ul-a{
+    text-decoration: none;
+    color: black;
+}  
+
+.sitemap-ul-a:hover{
+    color: #00b8ff;
+}          
+
+#sitemap-regionlist-wrap{
+    width: auto;
+    height: 370px;
+    padding-top: 10px;
+}

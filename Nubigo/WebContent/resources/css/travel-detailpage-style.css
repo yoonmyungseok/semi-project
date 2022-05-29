@@ -1,0 +1,327 @@
+
+/* 여행지 둘러보기 > 메인이미지 wrap */
+.travel-detailpage-imagewrap {
+    margin: auto;
+    width : 1200px;
+    height: 320px;
+    overflow : hidden;
+    position: relative;
+    background-color: black;
+    border-radius: 7px;
+}
+
+/* 여행지 둘러보기 > 메인이미지 속성 */
+.travel-detailpage-imagewrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.7) 0%);
+  }
+
+/* 여행지 둘러보기 > 메인이미지 텍스트 공통 스타일 속성 */
+.travel-detailpage-image1 {
+    position: absolute;
+    left: 60px;
+    color: white;
+}
+
+/* 여행지 둘러보기 > 메인이미지 텍스트 속성 (지역명) */
+#travel-detailpage-image1-text1{
+    top:-10px;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+/* 여행지 둘러보기 > 메인이미지 텍스트 속성 (인기 관광지 & 맛집 ~) */
+#travel-detailpage-image1-text2{
+    top:80px;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+/* 가볼만한곳 텍스트 속성 */
+.travel-detailpage-text {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1200px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 80px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 전체 wrap */
+.travelPage-list-wrap-wrap {
+    margin: auto;
+    width: 1200px;
+    height: 670px;
+    margin-bottom: 70px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 첫째줄 wrap */
+.travelPage-list1-wrap {
+    width: 1200px;
+    height: 300px;
+    position: relative;
+    margin-bottom: 70px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 첫째줄 속성 */
+.travelPage-list1 {
+    float: left;
+    width: 240px;
+    height: 300px;
+    overflow: hidden;
+    background-color: black;
+    border-radius: 7px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 첫째줄 이미지 속성 */
+.travelPage-list1>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 첫째줄 이미지 사이 여백 속성 */
+#travelPage-list1-list1,
+#travelPage-list1-list2,
+#travelPage-list1-list3 {
+    margin-right: 80px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 둘째줄 wrap */
+.travelPage-list2 {
+    float: left;
+    width: 260px;
+    height: 300px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 둘째줄 속성 */
+.travelPage-list2 {
+    float: left;
+    width: 240px;
+    height: 300px;
+    overflow: hidden;
+    background-color: black;
+    border-radius: 7px;
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 둘째줄 이미지 속성 */
+.travelPage-list2>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+/* 여행지역 둘러보기 > 가볼만한곳 둘째줄 이미지 사이 여백 속성 */
+#travelPage-list2-list1,
+#travelPage-list2-list2,
+#travelPage-list2-list3 {
+    margin-right: 80px;
+}
+
+.travelPage-list1,
+.travelPage-list2 {
+    transform: translate(0px, 0px);
+    transition: all 0.2s;
+}
+
+.travelPage-list1:hover,
+.travelPage-list2:hover {
+    transform: translate(0px, -5px);
+    transition: all 0.2s;
+    box-shadow: 1px 1px 10px rgb(226, 226, 226);
+}
+
+.travelPage-moreview-button1{
+    margin: auto;
+    width: 1200px;
+    height: 46px;
+}
+
+#travelPage-moreview-button1 {
+    margin: auto;
+    width: 300px;
+    height: 45px;
+    color: white;
+    border: 1px solid #FFCA29;
+    background-color: #FFCA29;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+    line-height : 43px;
+    cursor: pointer;
+}
+
+
+/* 여행지 둘러보기 > 인기 맛집 */
+#travelPage-restaurantlist-text {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1200px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 80px;
+}
+
+.travelPage-restaurantlist-wrap {
+    width: 1200px;
+    height: 270px;
+    margin: auto;
+    padding-bottom: 70px;
+}
+
+.travelPage-restaurantlist-list {
+    width: 379px;
+    height: 269px;
+    float: left;
+    background-color: black;
+    border-radius: 7px;
+    position: relative;
+
+}
+
+.travelPage-restaurantlist-list > img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+#travelPage-restaurantlist-list-list1{
+    margin-right: 30px;
+}
+
+#travelPage-restaurantlist-list-list3{
+    margin-left: 30px;
+}
+
+.travelPage-restaurantlist-listtext {
+    position: absolute;
+    color:white;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    bottom: 15px;
+    left: 30px;
+    width: 300px;
+}
+
+.travelPage-moreview-button2{
+    margin: auto;
+    width: 1200px;
+    height: 46px;
+}
+
+#travelPage-moreview-button2 {
+    margin: auto;
+    width: 300px;
+    height: 45px;
+    color: white;
+    border: 1px solid #FFCA29;
+    background-color: #FFCA29;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+    line-height : 43px;
+    cursor: pointer;
+}
+
+
+/* 여행지 둘러보기 > 베스트 여행기 */
+#main-listimage2-text {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1200px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 80px;
+}
+
+.main-imagelist2-warp {
+    width: 1200px;
+    height: 270px;
+    margin: auto;
+    padding-bottom: 70px;
+}
+
+.main-imagelist2-list {
+    width: 379px;
+    height: 269px;
+    float: left;
+    background-color: black;
+    border-radius: 7px;
+    position: relative;
+
+}
+
+.main-imagelist2-list > img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+#main-imagelist2-list1{
+    margin-right: 30px;
+}
+
+#main-imagelist2-list3{
+    margin-left: 30px;
+}
+
+.main-imagelist2-listtext {
+    position: absolute;
+    color:white;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    bottom: 15px;
+    left: 30px;
+    width: 300px;
+}
+
+.travelPage-moreview-button3{
+    margin: auto;
+    width: 1200px;
+    height: 46px;
+}
+
+#travelPage-moreview-button3 {
+    margin: auto;
+    width: 300px;
+    height: 45px;
+    color: white;
+    border: 1px solid #FFCA29;
+    background-color: #FFCA29;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+    line-height : 43px;
+    cursor: pointer;
+}
