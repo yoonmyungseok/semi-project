@@ -38,10 +38,10 @@
         }
 
         .body2 {
-            width : 60%;
+            width : 64%;
         }
         .body3{
-            width:24%;
+            width:20%;
         }
 
         .body1>div {
@@ -294,18 +294,25 @@
                     </div>
                     <div class="d-flex row mb-3">
                         <div class="col">
-                            <div id="uploadContent">
-
+                            <div id="uploadContent" class="d-flex align-items-center">
                             </div>
                         </div>
                     </div>
                 </div>
                 <script>
                     $(function () {
-                            $("input[type='file']").on('change', function () {
-                                $("#uploadContent").append('<div>'+event.target.files[0].name+'</div>');
+                            $("input[type='file']").on('change', function (e) {
+                                //$("#uploadContent").append("<img src="+event.target.files[0].name+">");
+                                var tmp=e.target.files[0];
+                                var img=URL.createObjectURL(tmp);
+                                $("#uploadContent").append("<img src="+img+" height='80px' class='mr-2 ml-2'>");
+                                if($('img').length>4){
+                                    
+                                }
                             });
-                        })
+                        
+                    })
+                        
                 </script>
                 <div class="body3">
                     <div class="findTravelForm" style="width: 100%; height: 300px;">

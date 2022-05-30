@@ -205,7 +205,7 @@
                 <hr class="menu-divide">
                 <div><a href="<%= contextPath %>/foodsReview.re" class="menus">맛집 후기</a></div>
                 <hr class="menu-divide">
-                <div><a href="<%= contextPath %>/myReview.re" class="menus">나의 여행 이야기</a></div>
+                <div><a href="<%= contextPath %>/myReview.re?currentPage=1" class="menus">나의 여행 이야기</a></div>
             </div>
             <div class="body2">
                 <table border="1">
@@ -300,7 +300,7 @@
 
                 <div class="review-content">
                     <p width="750px" height="800px">
-                       <%= r.getReviewContent() %>
+                        <%= r.getReviewContent() %>
                     </p>
                 </div>
                 <br>

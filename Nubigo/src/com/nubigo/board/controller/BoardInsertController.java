@@ -57,11 +57,12 @@ public class BoardInsertController extends HttpServlet {
 			}
 			
 			int result=new BoardService().insertBoard(b);
+			System.out.println(result);
 			
 			if(result>0) {
 				//성공=>/jsp/list.bo로 요청(리스트페이지가 보여지도록)
 				request.getSession().setAttribute("alertMsg", "성공적으로 게시글이 등록되었습니다");
-				response.sendRedirect(request.getContextPath()+"/list.bo?currentPage=1");
+				response.sendRedirect(request.getContextPath()+"/list.bo?currentPage=1&keyword=&search=&options=null");
 			}else {
 				//실패=>에러페이지로 포워딩
 				//if(b.getAttachmentName()!=null) {
