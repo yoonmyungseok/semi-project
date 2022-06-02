@@ -2,8 +2,9 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<entry key="">
-
+	<entry key="insertInquiry">
+		INSERT INTO INQUIRY
+		VALUES (SEQ_QNO.NEXTVAL, ?, ?, DEFAULT, DEFAULT, DEFAULT, ?)
 	</entry>
 
 </properties>

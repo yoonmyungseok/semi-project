@@ -1,0 +1,259 @@
+
+/* 이미지 슬라이더 속성 */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.restaurant-detailpage-imagewrap{
+    margin: auto;
+    width : 1200px;
+    height: 320px;
+    overflow : hidden;
+    background-color: black;
+    border-radius: 7px;
+    margin-bottom: 50px;
+}
+
+.swiper-slide>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.9)0%);
+  }
+
+  /* 관광지 콘텐트 wrap */
+  .restaurant-detailpage-content-wrap {
+      width: 1200px;
+      height: 300px;
+      margin: auto;
+      position: relative;
+  }
+
+  /* 관광지 텍스트 wrap */
+  .restaurant-detailpage-text {
+      width: 730px;
+      height: 300px;
+  }
+
+  /* 관광지명 텍스트 (강릉 안반데기 마을) 속성 */
+  #restaurant-detailpage-maintext {
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: 8px;
+  }
+
+  /* 별점 텍스트 속성 */
+  #restaurant-detailpage-subtext1 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFCA29;
+    margin-right: 10px;
+}
+
+/* 리뷰 텍스트 속성 */
+#restaurant-detailpage-subtext2{
+    font-size: 13px;
+    font-weight: 400;
+    color: black;
+}
+
+/* 관광지 본문 텍스트 속성 */
+#restaurant-detailpage-subtext3{
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+/* 지도 wrap */
+.restaurant-detailpage-map-wrap {
+    width: 400px;
+    height: 250px;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+}
+
+/* 내 여행리스트에 담기 속성 */
+#restaurant-detailpage-map-plus {
+    width: 202px;
+    height:39;
+    position: absolute;
+    top: 0;
+    right: 203px;
+}
+
+/* 주변맛집 영역 */
+#restaurant-detailpage-text {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1200px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 70px;
+}
+
+.restaurant-detailpage-warp {
+    width: 1200px;
+    height: 270px;
+    margin: auto;
+    margin-bottom: 140px;
+}
+
+.restaurant-detailpage-list {
+    width: 379px;
+    height: 269px;
+    float: left;
+    background-color: black;
+    border-radius: 7px;
+    position: relative;
+    transform: translate(0px, 0px);
+    transition: all 0.2s;
+}
+
+.restaurant-detailpage-list:hover {
+transform: translate(0px, -5px);
+transition: all 0.2s;
+box-shadow: 1px 1px 10px rgb(226, 226, 226);
+}
+
+.restaurant-detailpage-list > img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+#restaurant-detailpage-list1{
+    margin-right: 30px;
+}
+
+#restaurant-detailpage-list3{
+    margin-left: 30px;
+}
+
+.restaurant-detailpage-listtext {
+    position: absolute;
+    color:white;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    bottom: 15px;
+    left: 30px;
+    width: 300px;
+}
+
+#restaurant-detailpage-review-wrap-wrap{
+    width: 1200px;
+    height: 100px;
+    margin: auto;
+}
+
+#restaurant-detailpage-review-wrap{
+    width: 1200px;
+    height: 50px;
+    margin-top: 15px;
+}
+
+#restaurant-detailpage-review-text1 {
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+#restaurant-detailpage-review-text2 {
+    font-size: 30px;
+    font-weight: 600;
+    float: left;
+    margin-right: 20px;
+}
+
+#restaurant-detailpage-review-star{
+    font-size: 25px;
+    color: #FFCA29;
+    float: left;
+    margin-right: 20px;
+}
+
+#restaurant-detailpage-review-text3 {
+    font-size: 15px;
+    font-weight: 400;
+    padding-top: 10px;
+    color: gray;
+}
+
+#restaurant-detailpage-review-hr {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 1px 0px 0px 0px;
+    width: 1200px;
+}
+
+#restaurant-detailpage-map-plus-images1 {
+    width: 30px;
+    margin-right: 15px;
+}
+
+#restaurant-detailpage-map-plus-images2 {
+    width: 30px;
+    margin-right: 15px;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+
+#restaurant-detailpage-map-plus:hover {
+    cursor: pointer;
+}
+
+#restaurant-detailpage-map-plus:hover #restaurant-detailpage-map-plus-images2 {
+    display: inline;
+}
+
+#restaurant-detailpage-map-plus:hover #restaurant-detailpage-map-plus-images1 {
+    display: none;
+}
+
+#restaurant-detailpage-map-plus-text {
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    top: 5px;
+    cursor: pointer;
+}

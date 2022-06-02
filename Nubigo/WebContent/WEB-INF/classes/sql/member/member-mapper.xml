@@ -6,8 +6,59 @@
 		SELECT *
 		FROM MEMBER
 		WHERE MEMBER_ID = ?
-		  AND MEMBER_PWD = ?
-		  AND WITHDRAW_STATUS = 'N'
+		AND MEMBER_PWD = ?
+	</entry>
+
+	<entry key="selectMember">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_ID = ?
+		AND WITHDRAW_STATUS = 'N'
+	</entry>
+	<entry key="updateMember">
+		UPDATE MEMBER
+		SET MEMBER_NAME = ?
+		, GENDER = ?
+		, BIRTHDATE = ?
+		, EMAIL = ?
+		, PHONE = ?
+		WHERE MEMBER_ID = ?
+	</entry>
+	<entry key="updatePwdMember">
+		UPDATE MEMBER
+		SET MEMBER_PWD = ?
+		WHERE MEMBER_ID = ?
+		AND MEMBER_PWD = ?
+	</entry>
+	<entry key="deleteMember">
+		UPDATE MEMBER
+		SET WITHDRAW_STATUS = 'Y'
+		WHERE MEMBER_ID = ?
+		AND MEMBER_PWD = ?
+	</entry>
+
+	<entry key="enrollMember">
+
+		INSERT INTO MEMBER (MEMBER_NO, MEMBER_ID, MEMBER_PWD, EMAIL)
+		VALUES (SEQ_MNO.NEXTVAL, ?, ?, ?)
+
+	</entry>
+	
+	<entry key="searchId">
+		SELECT MEMBER_ID, WITHDRAW_STATUS
+		FROM MEMBER
+		WHERE EMAIL = ?
+	</entry>
+	<entry key="selectMemberAll">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_ID = ?
+	</entry>
+	
+	<entry key="randomPwd">
+		UPDATE MEMBER
+		SET MEMBER_PWD = ?
+		WHERE MEMBER_ID = ?
 	</entry>
 
 </properties>

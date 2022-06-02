@@ -2,8 +2,64 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<entry key="">
-
+<entry key="selectListCount">
+		SELECT COUNT(*) COUNT
+		  FROM PLACE
+	</entry>
+	
+	<entry key="selectList">
+		SELECT PLACE_NO, LOCAL_NAME, PLACE_NAME, PLACE_CATEGORY, LATITUDE, LONGITUDE, DELETE_STATUS
+		  FROM PLACE
+		  JOIN REGION USING(LOCAL_NO)
+		 WHERE PLACE_NO BETWEEN ? AND ?
+		ORDER BY PLACE_NO ASC
+	</entry>
+	
+	<entry key="insertPlace">
+		INSERT INTO PLACE(PLACE_NO,
+                  		  PLACE_CATEGORY,
+		                  PLACE_NAME,
+		                  LATITUDE,
+		                  LONGITUDE,
+		                  PLACE_CONTENT,
+		                  THUMBNAIL_PATH,
+		                  THUMBNAIL_NAME,
+		                  LOCAL_NO)
+		VALUES(SEQ_PNO.NEXTVAL,
+		       ?,
+		       ?,
+		       ?,
+		       ?,
+		       ?,
+		       ?,
+		       ?,
+		       ?) 
 	</entry>
 
+	<entry key="selectPlace">
+		SELECT PLACE_NO, LOCAL_NAME, PLACE_NAME, PLACE_CATEGORY, LATITUDE, LONGITUDE, PLACE_CONTENT, P.THUMBNAIL_PATH, P.THUMBNAIL_NAME, DELETE_STATUS
+		  FROM PLACE P
+		  JOIN REGION USING (LOCAL_NO)
+		WHERE PLACE_NO = ?
+	</entry>
+	
+	<entry key="updatePlace">
+		UPDATE PLACE
+		   SET PLACE_CATEGORY = ?,
+		       PLACE_NAME = ?,
+		       LATITUDE = ?,
+		       LONGITUDE = ?,
+		       PLACE_CONTENT = ?,
+		       DELETE_STATUS = ?,
+		       THUMBNAIL_PATH = ?,
+		       THUMBNAIL_NAME = ?,
+		       LOCAL_NO = ?
+		 WHERE PLACE_NO = ?
+	</entry>
+	
+	<entry key="deletePlace">
+		UPDATE PLACE
+		   SET DELETE_STATUS = 'Y'
+		 WHERE PLACE_NO = ?
+	</entry>
 </properties>

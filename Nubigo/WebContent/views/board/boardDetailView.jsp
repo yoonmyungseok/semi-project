@@ -115,13 +115,13 @@
         </div>
         <div class="d-flex justify-content-between mb-3 p-2">
             <% if(prev!=0){ %>
-            <a class="btn btn-outline-nubigoMain btn-sm" href="<%=contextPath%>/detail.bo?bno=<%=prev%>" id="boardPrev"><i class="bi bi-chevron-left"></i>이전 글</a>
+            <a class="btn btn-outline-nubigoMain btn-sm" href="<%=contextPath%>/detail.bo?bno=<%=prev%>&currentPage=<%=currentPage%>" id="boardPrev"><i class="bi bi-chevron-left"></i>이전 글</a>
             <%}else{%>
             <a class="btn btn-outline-nubigoMain btn-sm" id="boardPrev"><i class="bi bi-chevron-left"></i>이전 글</a>
             <%}%>
             <a class="btn btn-nubigoMain btn-sm" href="<%=contextPath%>/list.bo?currentPage=1">목록으로</a>
             <% if(next!=0){%>
-            <a class="btn btn-outline-nubigoMain btn-sm" href="<%=contextPath%>/detail.bo?bno=<%=next%>" id="boardNext">다음 글<i class="bi bi-chevron-right"></i></a>
+            <a class="btn btn-outline-nubigoMain btn-sm" href="<%=contextPath%>/detail.bo?bno=<%=next%>&currentPage=<%=currentPage%>" id="boardNext">다음 글<i class="bi bi-chevron-right"></i></a>
             <%}else{%>
             <a class="btn btn-outline-nubigoMain btn-sm" id="boardNext">다음 글<i class="bi bi-chevron-right"></i></a>
             <%}%>
@@ -283,6 +283,7 @@
                 <div class="d-flex mb-5">
                     <form class="form-inline" method="get" action="<%=contextPath %>/list.bo">
                         <input type="hidden" name="currentPage" value="<%=currentPage%>">
+                        <input type="hidden" name="options" value="<%=options%>">
                         <div class="mr-sm-2">
                             <select class="custom-select" name="keyword">
                                 <option value="제목내용">제목+내용</option>

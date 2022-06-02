@@ -10,12 +10,13 @@ div {
     height: 110px;
     margin: auto;
     margin-top: 15px;
+    margin-bottom: 25px;
 }
 
 .header-wrap>div { width : 100%; }
 
-#header { height: 50%;}
-#navigator { height: 50%;}
+#header { height: 54px;}
+#navigator { height: 54px;}
 
 #header>div {
     height: 100%;
@@ -24,6 +25,7 @@ div {
 
 #header_2 {
     width: 785px;
+    margin-left: -10px;
 }
 
 #header_3 {
@@ -36,7 +38,7 @@ div {
     margin-top: 5px;
     width : 70%;
     height: 45px;
-    background-color: rgb(243, 242, 242); 
+    background-color: rgb(243, 242, 242);
 }
 
 .btn_text:hover {
@@ -56,7 +58,7 @@ div {
     transform : translatey(-50%);
 }
 
-input:focus {
+.btn_text:focus {
     background-color: white;
     outline: 1px solid orange;
 }
@@ -93,6 +95,7 @@ input:focus {
     background-color: rgb(246, 246, 246); 
     border-radius: 100px;
     text-decoration: none;
+    color: black;
 }
 
 #nav-1 {
@@ -122,4 +125,152 @@ input:focus {
     width : 105px;
     height: 33px;
     margin-top: 3px;
+    margin-left: 13px;
+}
+
+/* 여기서부터는 여행지역 둘러보기 */
+
+/* 여행지역 둘러보기 > 메뉴 warp의 warp (위치 잡을 목적) */
+.menu-list-wrap-warp {
+    z-index: 10;
+    margin: auto;
+    width: 585px;
+    height: 380px;
+    position: absolute;
+    background-color : white;
+}
+
+/* 여행지역 둘러보기 > 메뉴 통째 wrap */
+#menu-list-warp {
+    width: 580px;
+    height: 379px;
+    border: 1px solid lightgray;
+    border-radius : 10px;
+    float: left;
+    background-color: white;
+
+}
+
+/* 여행지역 둘러보기 > 메뉴리스트 wrap */
+.menu-listmenu-wrap {
+    width: 130px;
+    height: 378px;
+    float: left;
+    background-color: white;
+    border-radius: 10px 0px 0px 10px;
+}
+
+/* 여행지역 둘러보기 > 메뉴리스트 속성  */
+.menu-listmenu {
+    border-bottom: 1px solid lightgrey;
+    border-right: 1px solid lightgray;
+    width: 130px;
+    height: 54px;
+    text-align: center;
+    line-height:54px;
+}
+
+/* 여행지역 둘러보기 > 인기 여행지 > 리스트 warp */
+.menu-travellist-best-warp{
+    width: 448px;
+    height: 378px;
+    float: right;
+    overflow: auto;
+    cursor: pointer;
+}
+
+/* 여행지역 둘러보기 > 인기 여행지 > 리스트 속성 */
+.menu-travellist {
+    width: 120px;
+    height: 80px;
+    float:left;
+    background-color: black;
+    border-radius: 6px;
+    margin-top: 25px;
+    margin-left: 20px;
+    position: relative;
+}
+
+/* 여행지역 둘러보기 > 인기 여행지 > 리스트 이미지 속성 */
+.menu-travellist-images {
+    width: 120px;
+    height: 80px;
+    -moz-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -webkit-mask-image:
+    linear-gradient(to bottom, #000000 50%, rgba(0,0,0,0.4) 80%);
+}
+
+/* 여행지역 둘러보기 > 인기 여행지 > 리스트 이미지 내 텍스트 속성 */
+.main-travellist-menu {
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 47px;
+}
+
+/* (인기여행지) 스크롤바 스타일 */
+.menu-travellist-best-warp::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .menu-travellist-best-warp::-webkit-scrollbar-corner {
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  .menu-travellist-best-warp::-webkit-scrollbar-thumb {
+    background-color: lightgrey;
+    border-radius: 10px;
+  }
+
+  .menu-travellist-best-warp::-webkit-scrollbar-thumb:hover {
+    background-color: gray;
+  }
+
+  .menu-travellist-best-warp::-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+
+  /* 여행지역 둘러보기 호버 + 인기여행지 호버 */
+  #menu-travellist-best:hover {
+    background-color :#00b8ff;
+    color: white;
+    border-radius: 10px 0px 0px 0px;
+    font-weight: 600;
+  }
+
+ /* 강원도,경기도,경상도,전라도,제주도 메뉴 호버 시 속성 */
+ #menu-travellist-gangwondo:hover, 
+ #menu-travellist-gyeonggido:hover,
+ #menu-travellist-gyeongsangdo:hover,
+ #menu-travellist-jeollado:hover,
+ #menu-travellist-jejudo:hover{
+    background-color :#00b8ff;
+    color: white;
+    font-weight: 600;
+  }
+
+  /* 충청도 메뉴 호버 시 속성*/
+  #menu-travellist-chungcheongdo:hover {
+    background-color :#00b8ff;
+    color: white;
+    border-radius: 0px 0px 0px 10px;
+    font-weight: 600;
+  }
+
+/* 강원도,경기도,경상도,전라도,제주도,충청도 리스트 속성 */
+  .menu-travellist-gangwondo-warp,
+  .menu-travellist-gyeonggido-warp,
+  .menu-travellist-gyeongsangdo-warp,
+  .menu-travellist-jeollado-warp,
+  .menu-travellist-jejudo-warp,
+  .menu-travellist-chungcheongdo-warp{
+    width: 448px;
+    height: 378px;
+    float: right;
+    cursor: pointer;
 }

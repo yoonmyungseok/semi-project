@@ -24,11 +24,11 @@ div {
   }
 
  .carousel-control-prev-icon {
-     transform : translate(-40px, -175px)
+     transform : translate(-40px, -160px)
  }
 
  .carousel-control-next-icon {
-    transform : translate(40px, -175px)
+    transform : translate(40px, -160px)
 }
 
   #main-imageslide-text {
@@ -39,7 +39,7 @@ div {
     color: white;
     position: absolute;
     z-index: 1;
-    top: 120px;
+    top: 125px;
     left: 120px;
 }
 
@@ -50,7 +50,7 @@ div {
   color: white;
   position: absolute;
   z-index: 1;
-  top: 195px;
+  top: 200px;
   left: 125px;
 }
 
@@ -63,7 +63,7 @@ form.example input[type=text] {
     background: #f1f1f1;
     position: absolute;
     z-index: 1;
-    top : 240px;
+    top : 245px;
     left: 120px;
     width: 720px;
     height: 48px;
@@ -73,8 +73,7 @@ form.example input[type=text] {
   }
 
   form.example input:hover {
-    outline: 1px solid gray;
-    outline-color: #FFCA29;
+    outline: 1px solid #FFCA29;
   }
   
   form.example button {
@@ -89,9 +88,9 @@ form.example input[type=text] {
     position: absolute;
     z-index: 1;
     width: 135px;
-    height: 43px;
-    top : 242px;
-    left: 702px;
+    height: 40px;
+    top : 249px;
+    left: 700px;
     border-radius: 5px;
   }
   

@@ -75,7 +75,7 @@ public class BoardUpdateController extends HttpServlet {
 			if(result>0) {
 				//성공=>/jsp/list.bo로 요청(리스트페이지가 보여지도록)
 				request.getSession().setAttribute("alertMsg", "성공적으로 게시글이 수정되었습니다");
-				response.sendRedirect(request.getContextPath()+"/detail.bo?bno="+boardNo);
+				response.sendRedirect(request.getContextPath()+"/detail.bo?bno="+boardNo+"&currentPage=1");
 			}else {
 				//실패=>에러페이지로 포워딩
 

@@ -49,6 +49,33 @@ public class BoardDao {
 		}
 		return count;
 	}
+	public int selectListCount(Connection conn,String search,String keyword) {
+		int count=0;
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		String sql="";
+		switch(keyword) {
+			case "제목내용" : sql=prop.getProperty("listCountAll"); break;
+			case "제목" : sql=prop.getProperty("listCountTitle"); break;
+			case "내용" : sql=prop.getProperty("listCountContent"); break;
+			case "작성자" : sql=prop.getProperty("listCountId"); break;
+		}
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			rset=pstmt.executeQuery();
+			if(rset.next()) {
+				count=rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return count;
+	}
 	
 	public int increaseCount(Connection conn, int boardNo) {
 		int result=0;

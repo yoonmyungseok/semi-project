@@ -81,6 +81,7 @@
         <div class="d-flex mb-5">
             <form class="form-inline" method="get" action="<%=contextPath %>/list.bo">
                 <input type="hidden" name="currentPage" value="<%=currentPage%>"> 
+                <input type="hidden" name="options" value="<%=options%>">
                 <div class="mr-sm-2">
                     <select class="custom-select" name="keyword">
                         <option value="제목내용">제목+내용</option>

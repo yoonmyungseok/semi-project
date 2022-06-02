@@ -41,8 +41,15 @@ public class BoardListController extends HttpServlet {
 		int startPage; //페이지 하단에 보여질 페이징바의 시작수
 		int endPage; //페이지 하단에 보여질 페이징바의 끝수
 		
+		String options=request.getParameter("options");
+		String search=request.getParameter("search");
+		String keyword=request.getParameter("keyword");
+		
 		//*listCount: 현재 총 게시글 갯수(단, STATUS 값이 'Y'일 경우)
 		listCount=new BoardService().selectListCount();
+		if(keyword.length()!=0||search.length()!=0){
+			listCount=new BoardService().selectListCount(search,keyword);
+		}
 		
 		//*currentpage: 현재페이지(즉, 사용자가 요청한 페이지)
 		currentPage=Integer.parseInt(request.getParameter("currentPage"));
@@ -59,10 +66,7 @@ public class BoardListController extends HttpServlet {
 			endPage=maxPage;
 		}
 		PageInfo pi=new PageInfo(listCount,currentPage,pageLimit,boardLimit,maxPage,startPage,endPage);
-		String options=request.getParameter("options");
 		
-		String search=request.getParameter("search");
-		String keyword=request.getParameter("keyword");
 		
 		ArrayList<Board> list=new ArrayList<>();
 		
@@ -87,12 +91,11 @@ public class BoardListController extends HttpServlet {
 		request.setAttribute("search", search);
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("options", options);
-		//System.out.println(options);
-		//response.setContentType("text/html; charset=utf-8");
-		//response.getWriter().print(options);
 		
 		//응답페이지:
-		//System.out.println(list);
+		System.out.println(keyword);
+		System.out.println(search);
+		System.out.println(pi.getListCount());
 		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
 		
 		//System.out.println("options:"+options+"search:"+search+"keyword:"+keyword+"list:"+list);

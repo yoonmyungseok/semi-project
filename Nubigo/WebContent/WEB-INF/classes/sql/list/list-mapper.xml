@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
-	<entry key="">
-
+	<entry key="selectMyList">
+	SELECT LIST_NO, LIST_TITLE, START_DATE, END_DATE, MEMBER_NO
+	  FROM LISTS
+	 WHERE START_DATE > SYSDATE
+	ORDER BY START_DATE DESC
+	</entry>
+	
+	<entry key="findTravel">
+	SELECT PLACE_NAME, PLACE_CONTENT, P.THUMBNAIL_PATH, P.THUMBNAIL_NAME
+	  FROM PLACE P
+	  JOIN REGION USING (LOCAL_NO)
+	 WHERE DELETE_STATUS = 'N'
+	   AND LOCAL_NAME = ?
+	<![CDATA[AND ROWNUM <= 10]]>
+	</entry>
+	
+	<entry key="selectMyPlace">
+		SELECT LIST_TITLE, PLACE_NAME, START_TIME, START_DATE, END_DATE
+		  FROM LIST_PLACES
+		  JOIN LISTS USING (LIST_NO)
+		  JOIN PLACE USING (PLACE_NO)
+		 WHERE LIST_NO = ?
+		   AND START_DATE > SYSDATE
+		ORDER BY START_DATE DESC
+	</entry>
+	
+	<entry key="selectOneList">
+		SELECT LIST_NO, LIST_TITLE, START_DATE, END_DATE, MEMBER_NO
+		  FROM LISTS
+		 WHERE START_DATE > SYSDATE
+		   AND LIST_NO = ?
 	</entry>
 
 </properties>

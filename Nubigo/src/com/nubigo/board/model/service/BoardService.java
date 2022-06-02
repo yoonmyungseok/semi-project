@@ -69,6 +69,12 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+	public int selectListCount(String search, String keyword) {
+		Connection conn=getConnection();
+		int result=new BoardDao().selectListCount(conn,search,keyword);
+		close(conn);
+		return result;
+	}
 	
 	public int insertBoard(Board b) {
 		Connection conn=getConnection();

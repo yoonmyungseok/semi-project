@@ -33,4 +33,15 @@ public class ReportService {
 		close(conn);
 		return result;
 	}
+	public int reviewReport(Report r) {
+		Connection conn=getConnection();
+		int result=new ReportDao().reviewReport(conn, r);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 }
