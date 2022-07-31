@@ -1,4 +1,3 @@
-
 # semi-project
 KH정보교육원 세미프로젝트
 
@@ -13,14 +12,26 @@ KH정보교육원 세미프로젝트
 4.  나만의 리스트로 **간편하게 여행 계획**까지
 5.  비슷한 조건의 **여행 리뷰들을 골라보고 결정**
 
-## 유사사이트 분석
-
 ## 다이어그램
+
+![다이어그램](https://user-images.githubusercontent.com/41504334/182010132-140beb81-efb0-4482-bc6c-38309a00a277.jpg)
 
 ## 세부기능
 
+- 회원가입 및 로그인 / 회원정보 수정
+- 여행지역별 관광지 / 맛집 정보 조회 / 검색
+- 원하는 관광지 / 맛집의 리뷰 조회 / 검색 => 원하는 여행 계절 / 구성원 / 연령대에 따라 조회 가능
+- 커뮤니티 활성화를 위한 자유게시판
+- 리뷰 / 자유게시판 / 댓글 등에 문제가 있는 게시물 발견 시 신고
+- FAQ 조회 및 관리자와의 1:1 문의
+- 여행지 / 리뷰 / 자유게시판 / 회원관리 / 문의관리 등이 모두 가능한 관리자 페이지
+
 ## 개발 환경
 
+- 운영체제: Windows11, macOS Monterey
+- 개발도구: Eclipse, VisualStudioCode
+- DBMS: Oracle SQL Developer
+- Server: Apache Tomcat v.8.5
+- Language: JAVA, HTML5, CSS3, Javascript, jQuery, Ajax, JSP
+- API: 카카오맵 API
 
-
-## 작업 일정표
