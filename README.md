@@ -16,6 +16,10 @@ KH정보교육원 세미프로젝트
 
 ![다이어그램](https://user-images.githubusercontent.com/41504334/182010132-140beb81-efb0-4482-bc6c-38309a00a277.jpg)
 
+## DB 설계
+
+![세미프로젝트ERD](https://user-images.githubusercontent.com/41504334/182010170-3f815c0f-92cc-42fd-ae94-7a56819a181e.png)
+
 ## 세부기능
 
 - 회원가입 및 로그인 / 회원정보 수정
